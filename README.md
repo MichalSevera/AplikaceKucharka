@@ -1,1 +1,2 @@
 # AplikaceKucharka
+Naše vynikající aplikace.
