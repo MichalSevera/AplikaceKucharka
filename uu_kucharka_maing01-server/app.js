@@ -25,7 +25,7 @@ app.use((req, res, next) => { // simple logging middleware
 
 //jednoduchá definice routy s HTTP metodou GET, která pouze navrací text
 app.get("/test", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello World! - Jirkovi se podarilo dostat az sem");
 });
 
 // router pro recipe
