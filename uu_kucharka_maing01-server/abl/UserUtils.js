@@ -4,7 +4,7 @@ const UserUtils = {
     CREATOR: Symbol("Creator"),
 
     hasAuthority: ( userId, authority) => {
-        const data = {}; // udržujte synchronizaci s development.json
+        const data = {}; // udržujte synchronizaci s frontedovym development.json
         data[this.ADMIN] = ["15-8545-1"]; 
         data[this.CREATOR] = ["15-8545-1"];
 

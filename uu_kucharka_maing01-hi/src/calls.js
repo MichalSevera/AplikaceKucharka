@@ -16,18 +16,19 @@ const instance = axios.create({
 
 const Calls = {
   async call(method, url, dtoIn, clientOptions) {
-    const response = await Plus4U5.Utils.AppClient[method](url, dtoIn, clientOptions);
+    const response = await Plus4U5.Utils.AppClient[method](url, dtoIn, clientOptions); // pouzivame AXIOS, ne AppClient
     return response.data;
   },
 
   // // example for mock calls
    loadContent(dtoIn) {
-      console.log("calling backend");
-     const commandUri = Calls.getCommandUri("recipe/list");
+    console.log("calling backend");
+    //const commandUri = Calls.getCommandUri("recipe/list");
 
 
-     return instance.get("recipe/list", {params: {msg: "buřt"}} );
-     //return Calls.call("put", commandUri, dtoIn);
+    return instance.get("recipe/list");
+    // takhle se posilaji params:  return instance.get("recipe/list", {params: {msg: "buřt"}} );
+    //return Calls.call("put", commandUri, dtoIn);
   },
 
   /*

@@ -1,0 +1,16 @@
+#uuApp div[data-name="Plus4U5App.TopView"] {
+    background-color: #6c757d !important;
+} 
+
+.page {
+    padding-left: 15px;    
+    padding-right: 15px;
+}
+
+.nadpis {
+    color: darkblue;
+}
+
+.data {
+    padding-left: 10px;
+}
