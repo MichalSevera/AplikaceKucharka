@@ -1,9 +1,6 @@
 const path = require("path");
 const Ajv = require("ajv").default;
-const RecipeDao = require("../../dao/recipe-dao");
-let dao = new RecipeDao(
-  path.join(__dirname, "..", "..", "storage", "recipes.json")
-);
+const dao = require("../../dao/recipe-dao");
 
 let schema = {
   type: "object",
