@@ -28,10 +28,20 @@ class RecipesDao {
         console.error("No storage found at " + this._getStorageLocation());
       }
       throw new Error(
-          "Unable to read from storage. " + this._getStorageLocation()
+        "Unable to read from storage. " + this._getStorageLocation()
       );
     }
     return resultList;
+  }
+
+  async deleteRecipe(id) {
+    let recipeList = await this._loadAllRecipes();
+    const recipeIndex = recipeList.findIndex((b) => b.id === id);
+    if (recipeIndex >= 0) {
+      recipeList.splice(recipeIndex, 1);
+    }
+    await wf(this._getStorageLocation(), JSON.stringify(recipeList, null, 2));
+    return {};
   }
 
   _getStorageLocation() {
