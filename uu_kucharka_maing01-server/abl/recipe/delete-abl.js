@@ -18,6 +18,12 @@ async function DeleteAbl(req, res) {
       const recipeId = req.body.id;
       await dao.deleteRecipe(recipeId);
       res.json({});
+      if (!recipeId) {
+        res
+          .status(400)
+          .send({ error: `Recipe with id '${recipeId}' doesn't exist.` });
+      }
+      res.json(recipeId);
     } else {
       res.status(400).send({
         errorMessage: "validation of input failed",

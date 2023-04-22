@@ -39,9 +39,17 @@ class RecipesDao {
     const recipeIndex = recipeList.findIndex((b) => b.id === id);
     if (recipeIndex >= 0) {
       recipeList.splice(recipeIndex, 1);
+      await wf(this._getStorageLocation(), JSON.stringify(recipeList, null, 2));
+    } else {
+      throw new Error(`Recipe with given id ${id} does not exists.`);
     }
-    await wf(this._getStorageLocation(), JSON.stringify(recipeList, null, 2));
     return {};
+  }
+
+  async getRecipe(id) {
+    let recipelist = await this._loadAllRecipes();
+    const result = recipelist.find((b) => b.id === id);
+    return result;
   }
 
   _getStorageLocation() {
