@@ -51,6 +51,14 @@ class SubjectsDao {
 
   async deleteSubject(id) {
     let subjectlist = await this._loadAllSubjects();
+    let subjectIDby = await this._loadAllcreatedBy(); 
+    const IDbyindex = subjectIDby.findCreatedBy((b) => b.id === id);
+    if (Index >= 0) {
+      subjectlist.splice(subjectIndex, 1);
+    }
+    await wf(this._getStorageLocation(), JSON.stringify(subjectlist, null, 2));
+    return {};
+  }
     const subjectIndex = subjectlist.findIndex((b) => b.id === id);
     if (subjectIndex >= 0) {
       subjectlist.splice(subjectIndex, 1);

@@ -3,21 +3,21 @@
     "name": "Buřty s cibulí",
     "desc": "Úžasný hospodský recept na drobné občerstvení",
     "longDesc": "Recept, jak upravit buřty. A také jak aplikovat cibuli. Jo.",
-    "createdBy": "123-456",
+    "createdBy": "84d4e4261f30a2e5",
     "id": "123"
   },
   {
     "name": "Buřty bez cibule",
     "desc": "Poněkud chudší recept",
     "longDesc": "Vezmete talíř a dáte na něj buřty.",
-    "createdBy": "123-123",
+    "createdBy": "84d4e4261f30a2e5",
     "id": "456"
   },
   {
     "name": "Smaž mne",
     "desc": "Recept ke smazání",
     "longDesc": "Zbytečný recept",
-    "createdBy": "111-111",
+    "createdBy": "1e838cb06cfeb01c",
     "id": "1234567890"
   }
 ]
