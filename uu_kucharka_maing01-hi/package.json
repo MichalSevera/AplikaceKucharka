@@ -10,6 +10,7 @@
     "axios": "^1.3.4",
     "bootstrap": "^5.2.3",
     "react-bootstrap": "^2.7.2",
+    "react-select": "^5.7.2",
     "uu_plus4u5g02": "^1.0.0",
     "uu_plus4u5g02-app": "^1.0.0",
     "uu_plus4u5g02-elements": "^1.0.0",

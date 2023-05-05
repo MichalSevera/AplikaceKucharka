@@ -11,7 +11,7 @@ let schema = {
 
 async function RecipeAbl(req, res) {
 
-  if (UserUtils.hasAuthority( "1-1" /* change to real user ID from incoming HTTP request  */, UserUtils.CREATOR)){
+  if (UserUtils.hasAuthority( "15-8545-1" /* change to real user ID from incoming HTTP request  */, UserUtils.CREATOR)){
     console.log("this example user is OK")
   } else {
     console.log("this example user is not authorized!")
@@ -19,7 +19,7 @@ async function RecipeAbl(req, res) {
 
   try {
     const recipes = await dao.listRecipes();
-    setTimeout(()=>res.json(recipes), 1500); // <--- only simulates DB data fetch delay
+    setTimeout(()=>res.json(recipes), 500); // <--- only simulates DB data fetch delay
   } catch (e) {
     res.status(500).send(e);
   }
