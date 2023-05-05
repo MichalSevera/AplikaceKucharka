@@ -3,8 +3,7 @@ const express = require("express");
 const cors = require("cors");
 
 const recipeRouter = require("./controller/recipe-controller");
-
-
+const ingredientRouter = require("./controller/ingredient-controller");
 
 //inicializace nového Express.js serveru
 const app = express();
@@ -25,6 +24,9 @@ app.use((req, res, next) => { // simple logging middleware
 
 // router pro recipe
 app.use("/recipe", recipeRouter);
+
+// router pro recipe
+app.use("/ingredient", ingredientRouter);
 
 // default path
 app.get("/*", (req, res) => {
