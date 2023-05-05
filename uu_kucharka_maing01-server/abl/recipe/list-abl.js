@@ -9,7 +9,7 @@ let schema = {
   required: [],
 };
 
-async function RecipeAbl(req, res) {
+async function ListAbl(req, res) {
 
   if (UserUtils.hasAuthority( "15-8545-1" /* change to real user ID from incoming HTTP request  */, UserUtils.CREATOR)){
     console.log("this example user is OK")
@@ -25,4 +25,4 @@ async function RecipeAbl(req, res) {
   }
 }
 
-module.exports = RecipeAbl;
+module.exports = ListAbl;

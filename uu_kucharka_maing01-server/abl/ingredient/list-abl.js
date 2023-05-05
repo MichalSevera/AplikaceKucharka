@@ -1,6 +1,6 @@
 const dao = require("../../dao/ingredient-dao");
 
-async function IngredientAbl(req, res) {
+async function ListAbl(req, res) {
 
   try {
     const recipes = await dao.listIngredients();
@@ -10,4 +10,4 @@ async function IngredientAbl(req, res) {
   }
 }
 
-module.exports = IngredientAbl;
+module.exports = ListAbl;

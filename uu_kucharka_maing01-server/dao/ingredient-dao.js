@@ -14,6 +14,21 @@ class IngredientsDao {
     this.ingredientsStoragePath = storagePath ? storagePath : DEFAULT_STORAGE_PATH;
   }
 
+  async createIngredient(ingredient) {
+    let ingredientList = await this._loadAllIngredients();
+    let duplicate = ingredientList.find(
+      (item) => item.name === ingredient.name
+    );
+    if (duplicate) {
+      throw `Ingredient with name ${ingredient.name} already exists in db.`;
+    }
+
+    ingredient.id = crypto.randomBytes(8).toString("hex");
+    ingredientList.push(ingredient);
+    await wf(this._getStorageLocation(), JSON.stringify(ingredientList, null, 2));
+    return ingredient;
+  }
+
   async listIngredients() {
     let ingredientsList = await this._loadAllIngredients();
     return ingredientsList;
