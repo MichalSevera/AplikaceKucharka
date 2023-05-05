@@ -8,11 +8,22 @@ let schema = {
   properties: {
     id: { type: "string" },
     userId: { type: "string" },
+    starred: { type: "boolean" }
   },
-  required: ["id", "userId"],
+  required: ["id", "userId", "starred"],
 };
 
-async function DeleteAbl(req, res) {
+function _getStars(recipe, userId, starred) {
+  stars = recipe.starred ? recipe.starred : [];
+  if (starred && !stars.includes(userId)){
+    stars.push(userId);
+  } else if (!starred) {
+    stars = stars.filter(s => s !== userId);
+  }
+  return stars;
+} 
+
+async function SetStarAbl(req, res) {
   const ajv = new Ajv();
   const valid = ajv.validate(schema, req.body);
 
@@ -26,28 +37,20 @@ async function DeleteAbl(req, res) {
   }
 
   try {
-    const { id, userId } = req.body;
-    const recipe = await dao.getRecipe(id);
+    const { id, userId, starred } = req.body;
+    let recipe = await dao.getRecipe(id);
 
     if (!recipe) {
       res.status(404).json({ errorMessage: `Recipe with id '${id}' doesn't exist.` });
       return;
     }
 
-    const isAdmin = userUtils.hasAuthority(userId, userUtils.ADMIN);
-    const isCreator = userUtils.hasAuthority(userId, userUtils.CREATOR);
-    const isAuthor = recipe.createdBy === userId;
-
-    if (isAdmin || (isCreator && isAuthor)) {
-      await dao.deleteRecipe(id);
-      res.json(recipe);
-    } else {
-      res.status(400).json({ errorMessage: "You are not allowed to delete this recipe." });
-    }
+    recipe = await dao.updateRecipe({id: recipe.id, starred: _getStars(recipe, userId, starred)});
+    res.json(recipe);
 
   } catch (e) {
     res.status(500).send(e.message);
   }
 }
 
-module.exports = DeleteAbl;
+module.exports = SetStarAbl;

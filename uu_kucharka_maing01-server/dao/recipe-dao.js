@@ -14,23 +14,38 @@ class RecipesDao {
     this.recipeStoragePath = storagePath ? storagePath : DEFAULT_STORAGE_PATH;
   }
 
-  async listRecipes() {
-    let recipesList = await this._loadAllRecipes();
-    return recipesList;
-  }
-
   async getRecipe(id) {
     let recipesList = await this._loadAllRecipes();
     const result = recipesList.find((b) => b.id === id);
     return result;
   }
 
+  async updateRecipe(recipe) {
+    let recipesList = await this._loadAllRecipes();
+    const recipeIndex = recipesList.findIndex((b) => b.id === recipe.id);
+    if (recipeIndex < 0) {
+      throw new Error(`Recipe with given id ${recipe.id} does not exists`);
+    } else {
+      recipesList[recipeIndex] = {
+        ...recipesList[recipeIndex],
+        ...recipe,
+      };
+    }
+    await this._saveAllRecipes(recipesList);
+    return recipesList[recipeIndex];
+  }
+
   async deleteRecipe(id) {
     let recipesList = await this._loadAllRecipes();
     recipesList = recipesList.filter(recipe => recipe.id !== id);
 
-    await wf(this._getStorageLocation(), JSON.stringify(recipesList, null, 2));
+    await this._saveAllRecipes(recipesList);
     return;
+  }
+
+  async listRecipes() {
+    let recipesList = await this._loadAllRecipes();
+    return recipesList;
   }
 
   async _loadAllRecipes() {
@@ -46,6 +61,10 @@ class RecipesDao {
       );
     }
     return resultList;
+  }
+
+  async _saveAllRecipes(recipesList){
+    await wf(this._getStorageLocation(), JSON.stringify(recipesList, null, 2));
   }
 
   _getStorageLocation() {

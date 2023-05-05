@@ -3,6 +3,7 @@ const router = express.Router();
 
 const DeleteAbl = require("../abl/recipe/delete-abl");
 const ListAbl = require("../abl/recipe/list-abl");
+const SetStarAbl = require("../abl/recipe/setStar-abl");
 
 /*
 const CreateAbl = require("../abl/student/create-abl");
@@ -28,6 +29,10 @@ router.delete("/delete", async (req, res) => {
 
 router.get("/list", async (req, res) => {
   await ListAbl(req, res);
+});
+
+router.put("/setstar", async (req, res) => {
+  await SetStarAbl(req, res);
 });
 
 module.exports = router;
