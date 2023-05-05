@@ -10,7 +10,7 @@ const UserUtils = {
   },
 
   hasAuthority: function(userId, authority){
-    console.log(this.data);
+    //console.log(this.data);
     if (this.data[authority] && Array.isArray(this.data[authority])) {
       return this.data[authority].includes(userId);
     }

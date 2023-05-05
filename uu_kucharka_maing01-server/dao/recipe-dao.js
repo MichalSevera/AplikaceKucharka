@@ -19,6 +19,20 @@ class RecipesDao {
     return recipesList;
   }
 
+  async getRecipe(id) {
+    let recipesList = await this._loadAllRecipes();
+    const result = recipesList.find((b) => b.id === id);
+    return result;
+  }
+
+  async deleteRecipe(id) {
+    let recipesList = await this._loadAllRecipes();
+    recipesList = recipesList.filter(recipe => recipe.id !== id);
+
+    await wf(this._getStorageLocation(), JSON.stringify(recipesList, null, 2));
+    return;
+  }
+
   async _loadAllRecipes() {
     let resultList;
     try {

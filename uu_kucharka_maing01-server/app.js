@@ -23,18 +23,13 @@ app.use((req, res, next) => { // simple logging middleware
   next();
 })
 
-//jednoduchá definice routy s HTTP metodou GET, která pouze navrací text
-app.get("/test", (req, res) => {
-  res.send("Hello World! - Jirkovi se podarilo dostat az sem");
-});
-
 // router pro recipe
 app.use("/recipe", recipeRouter);
 
-
+// default path
 app.get("/*", (req, res) => {
   res.send("Unknown path!");
-});
+}); 
 
 //nastavení portu, na kterém má běžet HTTP server
 app.listen(port, () => {
