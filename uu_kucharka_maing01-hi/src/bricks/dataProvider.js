@@ -14,8 +14,16 @@ class DataProvider extends Component {
   }  
 
   getData = () => {
-    Calls.loadContent().then(responseData => this.setState({recipeData: responseData.data})).catch(err => console.log("ERROR HAPPENED",err));
+    Calls.loadContent().then(responseData => {
+
+      //console.log("data:", responseData.data);
+
+      this.setState({recipeData: responseData.data.data});
+      // todo set pagination to state!!!
+
+    }).catch(err => console.log("ERROR HAPPENED",err));
     // todo set states // OK, PENDING, ERROR
+    // todo handle errors
     // todo rename
   }
 
