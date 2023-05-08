@@ -52,8 +52,13 @@ class RecipesDao {
     return;
   }
 
-  async listRecipes() {
+  async listRecipes(filter) {
     let recipesList = await this._loadAllRecipes();
+
+    if (filter && Object.keys(filter).length > 0){
+      recipesList = this._filterRecipes(recipesList, filter);
+    }
+
     return recipesList;
   }
 
@@ -70,6 +75,17 @@ class RecipesDao {
       );
     }
     return resultList;
+  }
+
+  _filterRecipes(recipesList, filter){ // todo some more filtering :)
+    console.log("filter", filter);
+    if (filter.text) {
+      recipesList = recipesList.filter(item => 
+        item.name && item.name.toLowerCase().includes(filter.text) || 
+        item.desc && item.desc.toLowerCase().includes(filter.text)
+      );  
+    }
+    return recipesList;
   }
 
   async _saveAllRecipes(recipesList){

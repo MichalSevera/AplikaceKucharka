@@ -1,19 +1,18 @@
-const path = require("path");
 const Ajv = require("ajv").default;
 const dao = require("../../dao/recipe-dao");
-const UserUtils = require("../UserUtils");
 
 let schema = {
   type: "object",
   properties: {
     "page-size": {
-      type: 'string', 
-      pattern: '^[0-9]{1,3}$'
+      type: "string", 
+      pattern: "^[0-9]{1,3}$"
     },
     "page-number": {
-      type: 'string', 
-      pattern: '^[0-9]{1,5}$'
+      type: "string", 
+      pattern: "^[0-9]{1,5}$"
     },
+    "text": {type: "string"}
   },
   required: [],
 };
@@ -43,9 +42,14 @@ async function ListAbl(req, res) {
   let pageSize = req.query["page-size"] ? parseInt(req.query["page-size"], 10) : 24;
   //console.log("page", pageNumber, pageSize);
 
+  let filter = {};
+  const { text } = req.query;
+  if (text) {
+    filter.text = text.toLowerCase();
+  }
 
   try {
-    let recipes = await dao.listRecipes(); // todo some filtering
+    let recipes = await dao.listRecipes(filter); // todo some filtering
     recipesPage = paginate(recipes, pageSize, pageNumber);
 
     let result = {
