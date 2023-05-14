@@ -5,6 +5,8 @@ const router = express.Router();
 
 const CreateAbl = require("../abl/ingredient/create-abl");
 const ListAbl = require("../abl/ingredient/list-abl");
+const ReadAbl = require("../abl/ingredient/read-abl");
+
 
 /*
 const CreateAbl = require("../abl/student/create-abl");
@@ -31,6 +33,10 @@ router.delete("/delete", async (req, res) => {
 */
 router.get("/list", async (req, res) => {
   await ListAbl(req, res);
+});
+
+router.get("/read", async (req, res) => {
+  await ReadAbl(req, res);
 });
 
 module.exports = router;
