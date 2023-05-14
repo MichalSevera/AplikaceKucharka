@@ -3,6 +3,11 @@ import {Component} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+
+import RecipeTile from './recipeTile';
+
 import './recipeTable.css';
 
 class RecipeTable extends Component {
@@ -35,7 +40,10 @@ class RecipeTable extends Component {
       return (<div>
         <div>počet receptů: {recipeData.length}</div>
         <br/><br/>
-        {recipeData.map(item => this.renderItem(item))}
+        <Container   >
+          <Row xs={1} md={2} lg={4}>{recipeData.map(item => <RecipeTile item={item} />)}</Row>
+        </Container>
+        
         </div>);
     }
   };  
