@@ -10,15 +10,17 @@ import RecipeTable from './recipeTable.js';
 import "./recipes.css";
 
 
-
 class Recipes extends Component {
 
   constructor(props){  
     super(props);  
     this.state = {  
-         // todo modal + modaldata
-         ingredientOptions : [{value: "jedna", label: "buřt"},{value: "druha", label: "cibule"}],
-         // todo 
+      filterData: {text: ""},       
+      
+      // todo modal + modaldata
+      ingredientOptions : [{value: "jedna", label: "buřt"},{value: "druha", label: "cibule"}],
+         
+         
       }  
   }  
 
@@ -31,9 +33,9 @@ class Recipes extends Component {
     }
   };
 
-  search = (filterData) => { // nuné vymyslet, jak bude fungovat filter a pagination dohromady
+  search = () => {
     const { calls } = this.props;
-    calls.listRecipes();
+    calls.listRecipes(this.state.filterData);
   }
 
   onPageChange = (page) => {
@@ -53,8 +55,12 @@ class Recipes extends Component {
     }, 1000);
   }
 
-  handleChange(value) {
-    //console.log("handleChange", value);
+  handleChange = (event) => {
+    //console.log("handleChang ", event.target.id, event.target.value);
+
+    let newData = {...this.state.filterData};
+    newData[event.target.id] = event.target.value;
+    this.setState({filterData: newData});
   }
 
   formatCreateLabel(label) {
@@ -69,18 +75,20 @@ class Recipes extends Component {
     //console.log(identity);
 
     const { recipeData } = this.props;
-    const { ingredientOptions } = this.state;
+    const { ingredientOptions, filterData } = this.state;
 
     return (<div className='page'>
       <div>Jsi ověřený uživatel: {identity.name} ({identity.uuIdentity})</div>
       <div>{this.printRights()}</div>
       <br/>
-      <RecipeFilter search={this.search}/>
+      <RecipeFilter search={this.search} handleChange={this.handleChange} inputValues={filterData} />
       <RecipeTable recipeData={recipeData} />
       <br />
       <div>a tady bude Pagination</div>
       <br /><br />
       <div>testovací select</div>
+
+
       <CreatableSelect isClearable isMulti options={ingredientOptions} 
       onCreateOption={this.handleCreate}
       onChange={this.handleChange}

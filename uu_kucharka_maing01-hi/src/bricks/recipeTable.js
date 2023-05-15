@@ -15,21 +15,12 @@ class RecipeTable extends Component {
   constructor(props){  
     super(props);  
     this.state = {  
-         showModal: false
+      detailModal: false
     }  
   }
 
-  handleClose = () => this.setState({ showModal: false });
-  handleShow = (data) => this.setState({ showModal: data }); // just an example, do not use i t this way!
-
-  renderItem = (item) => {
-    return <div key={item.id}>
-      <b>{item.name}</b><br/>
-      {item.longDesc}<br/>
-      <button onClick={() => this.handleShow(item)}>detail</button>
-      <br/><br/>
-      </div>;
-  };
+  handleCloseDetail = () => this.setState({ detailModal: false }); // todo přesunout nahoru?
+  handleShowDetail = (data) => this.setState({ detailModal: data });
 
   renderData = () => {
     const { recipeData } = this.props;
@@ -41,7 +32,7 @@ class RecipeTable extends Component {
         <div>počet receptů: {recipeData.length}</div>
         <br/><br/>
         <Container   >
-          <Row xs={1} md={2} lg={4}>{recipeData.map(item => <RecipeTile item={item} />)}</Row>
+          <Row xs={1} sm={2} md={3} lg={4}>{recipeData.map(item => <RecipeTile item={item} showDetail={this.handleShowDetail} />)}</Row>
         </Container>
         
         </div>);
@@ -49,9 +40,9 @@ class RecipeTable extends Component {
   };  
 
   render() {
-    //console.log("props", this.props);
+    console.log("table props", this.props);
 
-    let item = this.state.showModal;
+    let item = this.state.detailModal;
     //console.log(item);
 
     return (<div className='recipeTable'>
@@ -59,17 +50,17 @@ class RecipeTable extends Component {
       <br/>
       <div>{this.renderData()}</div>
 
-      {this.state.showModal && <div>
-      <Modal show={true} onHide={this.handleClose}>
+      {item && <div>
+      <Modal show={true} onHide={this.handleCloseDetail}>
         <Modal.Header closeButton>
           <Modal.Title>{item.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{item.desc}<br/><br/>{item.longDesc}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={this.handleClose}>
+          <Button variant="secondary" onClick={this.handleCloseDetail}>
             Zavřít
           </Button>
-          <Button variant="primary" onClick={this.handleClose}>
+          <Button variant="primary" onClick={this.handleCloseDetail}>
             Edit
           </Button>
         </Modal.Footer>

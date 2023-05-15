@@ -1,7 +1,10 @@
 
 import {Component} from 'react';
 
-import { Button } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 
 import './recipeFilter.css';
 
@@ -13,17 +16,39 @@ class RecipeFilter extends Component {
     }  
   }  
 
-  getData = () => { // todo rename and send some filter atttributes :)
+  search = (e) => {
+    e.preventDefault();
     this.props.search();
+  };
+
+  handleSubmit = (event) => { // todo možná submitovat enterem... a možná ne :)
+      event.preventDefault();
+      event.stopPropagation();
   }
 
   render() {
-    //console.log("props", this.props);
+    const { inputValues } = this.props;
+    // console.log("vals",inputValues);
 
     return (<div className='recipeFilter'>
-      <div>já jsem komponenta RecipeFilter</div>
-      <br/>
-      <Button variant="success" onClick={this.getData}>search</Button>
+    <Form onSubmit={this.handleSubmit}>
+      <Form.Group className="mb-3" controlId="text">
+        <Form.Label>Text</Form.Label>
+        <Form.Control
+          type="text"
+          value={this.props.inputValues.text}
+          placeholder="vyhledávaný text"
+          onChange={this.props.handleChange}
+          onKeyPress={()=> console.log("x")}
+          />
+      </Form.Group>
+
+      <Form.Group className="mb-3" id="formGridCheckbox">
+        <Form.Check type="checkbox" label="Oblíbené" />
+      </Form.Group>
+
+      <Button variant="primary" onClick={this.search}>Hledat</Button>
+    </Form>
     </div>);
   }
 }

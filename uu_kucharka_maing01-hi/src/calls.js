@@ -22,11 +22,11 @@ const Calls = {
 
   // // example for mock calls
    loadContent(dtoIn) {
-    console.log("calling backend");
+    console.log("calling backend with", dtoIn);
     //const commandUri = Calls.getCommandUri("recipe/list");
 
 
-    return instance.get("recipe/list");
+    return instance.get("recipe/list", {params: dtoIn});
     // takhle se posilaji params:  return instance.get("recipe/list", {params: {msg: "buřt"}} );
     //return Calls.call("put", commandUri, dtoIn);
   },

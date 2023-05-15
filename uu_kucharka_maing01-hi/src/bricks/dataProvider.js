@@ -13,8 +13,8 @@ class DataProvider extends Component {
       }  
   }  
 
-  getData = () => {
-    Calls.loadContent().then(responseData => {
+  getData = (dtoIn) => {
+    Calls.loadContent(dtoIn).then(responseData => {
 
       //console.log("data:", responseData.data);
 

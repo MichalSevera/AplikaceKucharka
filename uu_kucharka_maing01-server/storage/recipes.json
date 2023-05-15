@@ -3,6 +3,7 @@
     "name": "Buřty s cibulí",
     "desc": "Úžasný hospodský recept na drobné občerstvení. Vezmeme buřty a dáme je na talíř. Pak nakrájíme cibuli na kolečka a posypeme buřty. Podáváme ideálně s vychlazeným pivem. ",
     "id": "495a2f53e28edd18",
+    "photoUrl": "https://images.pexels.com/photos/533342/pexels-photo-533342.jpeg?auto=compress&cs=tinysrgb&w=600",
     "createdBy": "15-8545-1",
     "starred": []
   },
@@ -10,6 +11,7 @@
     "name": "Buřty bez cibule",
     "desc": "Poněkud chudší recept. Vezmeme buřty a dáme je na talíř. Tečka.",
     "id": "495a2f53e28eabcd",
+    "photoUrl": "https://images.pexels.com/photos/929137/pexels-photo-929137.jpeg?auto=compress&cs=tinysrgb&w=600",
     "createdBy": "15-8545-1",
     "starred": [
       "15-8545-1"
@@ -17,7 +19,8 @@
   },
   {
     "name": "fake",
-    "desc": "jen dočasně na vyplnění místa",
+    "desc": "jen dočasně na vyplnění místa, bez buřtů",
+    "photoUrl": "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=300&dpr=1",
     "id": "1",
     "createdBy": "15-8545-1"
   },
