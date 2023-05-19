@@ -14,7 +14,8 @@ class Recipes extends Component {
     this.state = {
       filterData: { text: "" },
       detailModal: false,
-
+      currentPage: 1,
+      recipesPerPage: 12,
       // todo modal + modaldata
       ingredientOptions: [
         { value: "jedna", label: "buřt" },
@@ -42,8 +43,8 @@ class Recipes extends Component {
     this.props.calls.listRecipes(this.state.filterData);
   };
 
-  onPageChange = (page) => {
-    //todo
+  onPageChange = (pageNumber) => {
+    this.setState({ currentPage: pageNumber });
   };
 
   handleCreate(value) {
@@ -86,6 +87,27 @@ class Recipes extends Component {
 
     const { ingredientOptions, filterData, detailModal } = this.state;
 
+    const { currentPage, recipesPerPage } = this.state;
+    const lastRecipe = currentPage * recipesPerPage;
+    const firstRecipe = lastRecipe - recipesPerPage;
+    const currentRecipes = recipeData.slice(firstRecipe, lastRecipe);
+    const totalPages = Math.ceil(recipeData.length / recipesPerPage);
+
+    const toPreviousPage = () => {
+      if (currentPage > 1) {
+        console.log("toPreviousPage - Current Page:", currentPage);
+        this.setState({ currentPage: currentPage - 1 });
+      }
+    };
+
+    const toNextPage = () => {
+      if (currentPage < totalPages) {
+        console.log("toNextPage - Current Page:", currentPage);
+        this.setState({ currentPage: currentPage + 1 });
+      }
+    };
+
+
     return (
       <div className="page">
         <div>
@@ -96,7 +118,10 @@ class Recipes extends Component {
         <RecipeFilter search={this.search} handleChange={this.handleChange} inputValues={filterData} />
         <RecipeTable recipeData={recipeData} ingredientData={ingredientData} handleShowDetail={this.handleShowDetail} />
         <br />
-        <div>a tady bude Pagination</div>
+        <div className="pagination">
+          <button onClick={toPreviousPage}>Předchozí</button>
+          <button onClick={toNextPage}>Další</button>
+        </div>
         <br />
         {detailModal ? (
           <RecipeDetail item={detailModal} ingredientData={ingredientData} handleClose={this.handleCloseDetail} />
