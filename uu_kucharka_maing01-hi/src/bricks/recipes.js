@@ -15,7 +15,7 @@ class Recipes extends Component {
       filterData: { text: "" },
       detailModal: false,
       currentPage: 1,
-      recipesPerPage: 12,
+      recipesPerPage: 3,
       // todo modal + modaldata
       ingredientOptions: [
         { value: "jedna", label: "buřt" },
@@ -107,7 +107,6 @@ class Recipes extends Component {
       }
     };
 
-
     return (
       <div className="page">
         <div>
@@ -116,8 +115,13 @@ class Recipes extends Component {
         <div>{this.printRights()}</div>
         <br />
         <RecipeFilter search={this.search} handleChange={this.handleChange} inputValues={filterData} />
-        <RecipeTable recipeData={recipeData} ingredientData={ingredientData} handleShowDetail={this.handleShowDetail} />
+        <RecipeTable
+          recipeData={currentRecipes}
+          ingredientData={ingredientData}
+          handleShowDetail={this.handleShowDetail}
+        />
         <br />
+
         <div className="pagination">
           <button onClick={toPreviousPage}>Předchozí</button>
           <button onClick={toNextPage}>Další</button>
