@@ -5,14 +5,14 @@ let schema = {
   type: "object",
   properties: {
     "page-size": {
-      type: "string", 
-      pattern: "^[0-9]{1,3}$"
+      type: "string",
+      pattern: "^[0-9]{1,3}$",
     },
     "page-number": {
-      type: "string", 
-      pattern: "^[0-9]{1,5}$"
+      type: "string",
+      pattern: "^[0-9]{1,5}$",
     },
-    "text": {type: "string"}
+    text: { type: "string" },
   },
   required: [],
 };
@@ -23,7 +23,6 @@ function paginate(array, pageSize, pageNumber) {
 }
 
 async function ListAbl(req, res) {
-
   //console.log("Query params", req.query);
 
   const ajv = new Ajv();
@@ -38,8 +37,12 @@ async function ListAbl(req, res) {
     return;
   }
 
-  let pageNumber = req.query["page-number"] ? parseInt(req.query["page-number"], 10) : 1; // todo make named constants
-  let pageSize = req.query["page-size"] ? parseInt(req.query["page-size"], 10) : 24;
+  let pageNumber = req.query["page-number"]
+    ? parseInt(req.query["page-number"], 10)
+    : 1; // todo make named constants
+  let pageSize = req.query["page-size"]
+    ? parseInt(req.query["page-size"], 10)
+    : 24;
   //console.log("page", pageNumber, pageSize);
 
   let filter = {};
@@ -58,12 +61,11 @@ async function ListAbl(req, res) {
         pageNumber: pageNumber,
         pageSize: pageSize,
         totalItems: recipes.length,
-        totalPages: Math.ceil(recipes.length / pageSize)
-      }
+        totalPages: Math.ceil(recipes.length / pageSize),
+      },
     };
 
-    setTimeout(()=>res.json(result), 750); // <--- only simulates DB data fetch delay
-
+    setTimeout(() => res.json(result), 150); // <--- only simulates DB data fetch delay
   } catch (e) {
     res.status(500).send(e);
   }

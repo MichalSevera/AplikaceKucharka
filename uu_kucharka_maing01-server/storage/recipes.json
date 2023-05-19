@@ -4,6 +4,11 @@
     "desc": "Úžasný hospodský recept na drobné občerstvení. Vezmeme buřty a dáme je na talíř. Pak nakrájíme cibuli na kolečka a posypeme buřty. Podáváme ideálně s vychlazeným pivem. ",
     "id": "495a2f53e28edd18",
     "photoUrl": "https://images.pexels.com/photos/533342/pexels-photo-533342.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "ingredients": [
+      { "id": "1000000", "amount": 2 },
+      { "id": "1000001", "amount": 3 },
+      { "id": "1000002", "amount": 0 }
+    ],
     "createdBy": "15-8545-1",
     "starred": []
   },
@@ -13,16 +18,14 @@
     "id": "495a2f53e28eabcd",
     "photoUrl": "https://images.pexels.com/photos/929137/pexels-photo-929137.jpeg?auto=compress&cs=tinysrgb&w=600",
     "createdBy": "15-8545-1",
-    "starred": [
-      "15-8545-1"
-    ]
+    "starred": ["15-8545-1"]
   },
   {
-    "name": "fake",
-    "desc": "jen dočasně na vyplnění místa, bez buřtů",
+    "name": "Lívance",
+    "desc": "Kouzelně jednoduchý recept. Accio lívance!!!",
     "photoUrl": "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=300&dpr=1",
     "id": "1",
-    "createdBy": "15-8545-1"
+    "createdBy": "4-7644-1"
   },
   {
     "name": "fake2",
@@ -30,7 +33,7 @@
     "createdBy": "15-8545-1"
   },
   {
-    "name": "fake",
+    "name": "fake3",
     "id": "3",
     "createdBy": "15-8545-1"
   },
@@ -41,7 +44,7 @@
     "desc": "Nějaký delší fake text, prostě kecy a kecy atd atd a pak ještě další kecy nebo jiný blbosti..."
   },
   {
-    "name": "fake",
+    "name": "fake5",
     "id": "5",
     "createdBy": "15-8545-1"
   }
