@@ -24,9 +24,13 @@ async function CreateAbl(req, res) {
     return;
   }
 
-  const allowed = userUtils.hasAuthority(req.body.userId, userUtils.CREATOR) || userUtils.hasAuthority(req.body.userId, userUtils.ADMIN);
+  const allowed =
+    userUtils.hasAuthority(req.body.userId, userUtils.CREATOR) ||
+    userUtils.hasAuthority(req.body.userId, userUtils.ADMIN);
   if (!allowed) {
-    res.status(400).json({ errorMessage: "You are not allowed to create ingredients." });
+    res
+      .status(400)
+      .json({ errorMessage: "You are not allowed to create ingredients." });
     return;
   }
 
@@ -34,8 +38,8 @@ async function CreateAbl(req, res) {
     let ingredient = {
       name: req.body.name,
       created: new Date().toISOString(),
-      createdBy: req.body.userId
-    }
+      createdBy: req.body.userId,
+    };
     ingredient = await dao.createIngredient(ingredient);
     res.json(ingredient);
   } catch (e) {

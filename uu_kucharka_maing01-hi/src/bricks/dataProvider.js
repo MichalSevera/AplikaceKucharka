@@ -1,5 +1,6 @@
 import React from "react";
-import { Component, Fragment } from "react";
+import { Component } from "react";
+import Uu5Elements from "uu5g05-elements";
 
 import Calls from "calls";
 
@@ -26,6 +27,17 @@ class DataProvider extends Component {
     // todo handle errors
   };
 
+  createRecipeCall = (dtoIn, callback, errorCallback) => {
+    Calls.createRecipe(dtoIn)
+      .then((responseData) => {
+        callback && callback(responseData.data);
+      })
+      .catch((err) => {
+        console.log("RECIPE ERROR HAPPENED", err);
+        errorCallback && errorCallback(err);
+      });
+  };
+
   listIngedientCall = (dtoIn) => {
     Calls.listIngredients(dtoIn)
       .then((responseData) => {
@@ -42,6 +54,10 @@ class DataProvider extends Component {
 
   // plus všechny obslužné metody samozřejmě odkaz nemění!
 
+  addAlert = (data) => {
+    this.props.addAlert(data);
+  };
+
   render() {
     const { recipeData, ingredientData } = this.state;
 
@@ -50,14 +66,21 @@ class DataProvider extends Component {
       ingredientData,
       calls: {
         listRecipes: this.listRecipesCall,
+        createRecipe: this.createRecipeCall,
         listIngredients: this.listIngedientCall,
+        addAlert: this.addAlert,
       },
     };
 
-    return (
-      <Fragment>{React.Children.map(this.props.children, (child) => React.cloneElement(child, { ...props }))}</Fragment>
-    );
+    return <>{React.Children.map(this.props.children, (child) => React.cloneElement(child, { ...props }))}</>;
   }
 }
 
-export default DataProvider;
+const withAlert = (Component) => (props) => {
+  const { addAlert } = Uu5Elements.useAlertBus();
+  return <Component addAlert={addAlert} {...props} />;
+};
+
+const AlertedDataProvider = withAlert(DataProvider);
+
+export default AlertedDataProvider;

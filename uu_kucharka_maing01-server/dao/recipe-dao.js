@@ -46,7 +46,7 @@ class RecipesDao {
 
   async deleteRecipe(id) {
     let recipesList = await this._loadAllRecipes();
-    recipesList = recipesList.filter(recipe => recipe.id !== id);
+    recipesList = recipesList.filter((recipe) => recipe.id !== id);
 
     await this._saveAllRecipes(recipesList);
     return;
@@ -55,7 +55,7 @@ class RecipesDao {
   async listRecipes(filter) {
     let recipesList = await this._loadAllRecipes();
 
-    if (filter && Object.keys(filter).length > 0){
+    if (filter && Object.keys(filter).length > 0) {
       recipesList = this._filterRecipes(recipesList, filter);
     }
 
@@ -71,24 +71,27 @@ class RecipesDao {
         console.error("No storage found at " + this._getStorageLocation());
       }
       throw new Error(
-          "Unable to read from storage. " + this._getStorageLocation()
+        "Unable to read from storage. " + this._getStorageLocation()
       );
     }
     return resultList;
   }
 
-  _filterRecipes(recipesList, filter){ // todo some more filtering :)
+  _filterRecipes(recipesList, filter) {
+    // todo some more filtering :)
     console.log("filter", filter);
     if (filter.text) {
-      recipesList = recipesList.filter(item => 
-        item.name && item.name.toLowerCase().includes(filter.text) || 
-        item.desc && item.desc.toLowerCase().includes(filter.text)
-      );  
+      recipesList = recipesList.filter(
+        (item) =>
+          (item.name && item.name.toLowerCase().includes(filter.text)) ||
+          (item.description &&
+            item.description.toLowerCase().includes(filter.text))
+      );
     }
     return recipesList;
   }
 
-  async _saveAllRecipes(recipesList){
+  async _saveAllRecipes(recipesList) {
     await wf(this._getStorageLocation(), JSON.stringify(recipesList, null, 2));
   }
 

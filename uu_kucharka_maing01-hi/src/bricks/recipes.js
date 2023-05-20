@@ -2,9 +2,12 @@ import { Component } from "react";
 import CreatableSelect from "react-select/creatable";
 import IdentityContext from "../core/identity-context.js";
 
+import Button from "react-bootstrap/Button";
+
 import RecipeFilter from "./recipeFilter.js";
 import RecipeTable from "./recipeTable.js";
 import RecipeDetail from "./recipeDetail.js";
+import RecipeCreate from "./recipeCreate.js";
 
 import "./recipes.css";
 
@@ -14,8 +17,9 @@ class Recipes extends Component {
     this.state = {
       filterData: { text: "" },
       detailModal: false,
+      createModal: false,
 
-      // todo modal + modaldata
+      // todo modal + modaldata --- todo change
       ingredientOptions: [
         { value: "jedna", label: "buřt" },
         { value: "druha", label: "cibule" },
@@ -26,6 +30,7 @@ class Recipes extends Component {
   componentDidMount = function () {
     console.log("componentDidMount");
     this.props.calls.listIngredients();
+    this.search();
   };
 
   printRights = () => {
@@ -39,11 +44,40 @@ class Recipes extends Component {
   };
 
   search = () => {
-    this.props.calls.listRecipes(this.state.filterData);
+    this.props.calls.listRecipes(this.state.filterData); // todo pagination
   };
 
   onPageChange = (page) => {
     //todo
+  };
+
+  handleShowCreate = () => {
+    this.setState({ createModal: true });
+  };
+
+  handleCloseCreate = () => {
+    this.setState({ createModal: false });
+  };
+
+  handleSubmitCreate = (data) => {
+    const { identity } = this.context;
+    let dtoIn = {
+      userId: identity.uuIdentity,
+      data: data,
+    };
+
+    const callback = (data) => {
+      this.setState({ createModal: false });
+      this.props.calls.addAlert({ message: 'Recept "' + data.name + '" byl vytvořen.', priority: "success" });
+
+      this.search(); // todo with current pagination
+    };
+
+    const errorCallback = (data) => {
+      this.props.calls.addAlert({ header: "Chyba", message: "Vytvoření receptu selhalo.", priority: "error" });
+    };
+
+    this.props.calls.createRecipe(dtoIn, callback, errorCallback);
   };
 
   handleCreate(value) {
@@ -75,6 +109,21 @@ class Recipes extends Component {
 
   handleCloseDetail = () => this.setState({ detailModal: false });
 
+  renderDetail = () => {
+    const { ingredientData } = this.props;
+    const { detailModal } = this.state;
+
+    if (this.state.detailModal) {
+      return <RecipeDetail item={detailModal} ingredientData={ingredientData} handleClose={this.handleCloseDetail} />;
+    }
+  };
+
+  renderCreate = () => {
+    if (this.state.createModal) {
+      return <RecipeCreate handleSubmit={this.handleSubmitCreate} handleClose={this.handleCloseCreate} />;
+    }
+  };
+
   render() {
     console.log("recipes props", this.props);
     //console.log("context", this.context);
@@ -93,16 +142,17 @@ class Recipes extends Component {
         </div>
         <div>{this.printRights()}</div>
         <br />
+        <Button variant="secondary" onClick={this.handleShowCreate}>
+          + create
+        </Button>
+        <br />
         <RecipeFilter search={this.search} handleChange={this.handleChange} inputValues={filterData} />
         <RecipeTable recipeData={recipeData} ingredientData={ingredientData} handleShowDetail={this.handleShowDetail} />
         <br />
         <div>a tady bude Pagination</div>
         <br />
-        {detailModal ? (
-          <RecipeDetail item={detailModal} ingredientData={ingredientData} handleClose={this.handleCloseDetail} />
-        ) : (
-          ""
-        )}
+        {this.renderDetail()}
+        {this.renderCreate()}
 
         <br />
         <div>testovací select</div>

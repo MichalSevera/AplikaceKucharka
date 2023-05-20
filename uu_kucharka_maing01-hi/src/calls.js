@@ -18,6 +18,11 @@ const Calls = {
     //return Calls.call("put", commandUri, dtoIn);
   },
 
+  createRecipe(dtoIn) {
+    console.log("calling createRecipe", dtoIn);
+    return instance.post("recipe/create", dtoIn);
+  },
+
   listIngredients(dtoIn) {
     console.log("calling listIngredients", dtoIn);
     return instance.get("ingredient/list");

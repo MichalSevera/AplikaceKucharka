@@ -76,7 +76,7 @@ class RecipeDetail extends Component {
           <Modal.Title>{item.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {item.desc}
+          {item.description}
           <br />
           {item.longDesc}
         </Modal.Body>

@@ -1,28 +1,39 @@
 [
   {
     "name": "Buřty s cibulí",
-    "desc": "Úžasný hospodský recept na drobné občerstvení. Vezmeme buřty a dáme je na talíř. Pak nakrájíme cibuli na kolečka a posypeme buřty. Podáváme ideálně s vychlazeným pivem. ",
+    "description": "Úžasný hospodský recept na drobné občerstvení. Vezmeme buřty a dáme je na talíř. Pak nakrájíme cibuli na kolečka a posypeme buřty. Podáváme ideálně s vychlazeným pivem. ",
     "id": "495a2f53e28edd18",
     "photoUrl": "https://images.pexels.com/photos/533342/pexels-photo-533342.jpeg?auto=compress&cs=tinysrgb&w=600",
     "ingredients": [
-      { "id": "1000000", "amount": 2 },
-      { "id": "1000001", "amount": 3 },
-      { "id": "1000002", "amount": 0 }
+      {
+        "id": "1000000",
+        "amount": 2
+      },
+      {
+        "id": "1000001",
+        "amount": 3
+      },
+      {
+        "id": "1000002",
+        "amount": 0
+      }
     ],
     "createdBy": "15-8545-1",
     "starred": []
   },
   {
     "name": "Buřty bez cibule",
-    "desc": "Poněkud chudší recept. Vezmeme buřty a dáme je na talíř. Tečka.",
+    "description": "Poněkud chudší recept. Vezmeme buřty a dáme je na talíř. Tečka.",
     "id": "495a2f53e28eabcd",
     "photoUrl": "https://images.pexels.com/photos/929137/pexels-photo-929137.jpeg?auto=compress&cs=tinysrgb&w=600",
     "createdBy": "15-8545-1",
-    "starred": ["15-8545-1"]
+    "starred": [
+      "15-8545-1"
+    ]
   },
   {
     "name": "Lívance",
-    "desc": "Kouzelně jednoduchý recept. Accio lívance!!!",
+    "description": "Kouzelně jednoduchý recept. Accio lívance!!!",
     "photoUrl": "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=300&dpr=1",
     "id": "1",
     "createdBy": "4-7644-1"
@@ -41,11 +52,20 @@
     "name": "fake4",
     "id": "4",
     "createdBy": "15-8545-1",
-    "desc": "Nějaký delší fake text, prostě kecy a kecy atd atd a pak ještě další kecy nebo jiný blbosti..."
+    "description": "Nějaký delší fake text, prostě kecy a kecy atd atd a pak ještě další kecy nebo jiný blbosti..."
   },
   {
     "name": "fake5",
     "id": "5",
     "createdBy": "15-8545-1"
+  },
+  {
+    "name": "aaaaa",
+    "description": "bib",
+    "photoUrl": "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=300&dpr=1",
+    "starred": [],
+    "created": "2023-05-20T11:34:09.637Z",
+    "createdBy": "15-8545-1",
+    "id": "3c0b3e6d32942eb5"
   }
 ]

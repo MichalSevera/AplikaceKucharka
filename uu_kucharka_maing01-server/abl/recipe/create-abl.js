@@ -3,17 +3,19 @@ const dao = require("../../dao/recipe-dao");
 
 const userUtils = require("../UserUtils");
 
-let schema = { // todo some more checks, add properties!
+let schema = {
+  // todo some more checks, add properties!
   type: "object",
   properties: {
-    data: { 
+    data: {
       type: "object",
       properties: {
-        name: { type: "string", maxLength: 80}, 
-        description: { type: "string", maxLength: 2000}
+        name: { type: "string", maxLength: 80 },
+        description: { type: "string", maxLength: 2000 },
+        photoUrl: { type: "string", maxLength: 255 },
       },
       required: ["name", "description"],
-      additionalProperties: false
+      additionalProperties: false,
     },
     userId: { type: "string" },
   },
@@ -34,13 +36,17 @@ async function CreateAbl(req, res) {
     return;
   }
 
+  // todo photourl pattern
+
   try {
     const isCreator = userUtils.hasAuthority(userId, userUtils.CREATOR);
 
     if (!isCreator) {
-      res.status(400).json({ errorMessage: "You are not allowed to create recipes." });
+      res
+        .status(400)
+        .json({ errorMessage: "You are not allowed to create recipes." });
       return;
-    } 
+    }
 
     // todo some more checks!
 
@@ -50,12 +56,11 @@ async function CreateAbl(req, res) {
       ...data,
       starred: [],
       created: new Date().toISOString(),
-      createdBy: userId
-    }
+      createdBy: userId,
+    };
 
     recipe = await dao.createRecipe(recipe);
     res.json(recipe);
-
   } catch (e) {
     res.status(500).send(e.message);
   }

@@ -26,7 +26,7 @@ class RecipeTile extends Component {
           {item.photoUrl ? <Card.Img variant="top" src={item.photoUrl} /> : ""}
           <Card.Body>
             <Card.Title>{item.name}</Card.Title>
-            <Card.Text>{item.desc}</Card.Text>
+            <Card.Text>{item.description}</Card.Text>
           </Card.Body>
 
           <Card.Body>
