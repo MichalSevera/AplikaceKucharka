@@ -23,10 +23,11 @@ class RecipeCreate extends Component {
     const { item, handleClose } = this.props;
 
     return (
-      <Modal show={true} size="md" onHide={this.handleClose}>
+      <Modal show={true} size="lg" onHide={this.handleClose}>
         <RecipeForm
           title="Vytvořit recept"
           submitTitle="Vytvořit"
+          ingredientData={this.props.ingredientData}
           handleClose={this.handleClose}
           handleSubmit={this.handleSubmit}
         />

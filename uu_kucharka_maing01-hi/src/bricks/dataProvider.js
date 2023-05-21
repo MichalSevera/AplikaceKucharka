@@ -41,7 +41,6 @@ class DataProvider extends Component {
   listIngedientCall = (dtoIn) => {
     Calls.listIngredients(dtoIn)
       .then((responseData) => {
-        //console.log("data:", responseData.data);
         this.setState({ ingredientData: responseData.data });
       })
       .catch((err) => console.log("INGREDIENT ERROR HAPPENED", err));

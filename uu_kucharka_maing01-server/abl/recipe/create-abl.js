@@ -1,5 +1,6 @@
 const Ajv = require("ajv").default;
 const dao = require("../../dao/recipe-dao");
+const ingredientDao = require("../../dao/ingredient-dao");
 
 const userUtils = require("../UserUtils");
 
@@ -13,8 +14,9 @@ let schema = {
         name: { type: "string", maxLength: 80 },
         description: { type: "string", maxLength: 2000 },
         photoUrl: { type: "string", maxLength: 255 },
+        ingredients: { type: "array" }, //TODO items: {type: "integer"}}
       },
-      required: ["name", "description"],
+      required: ["name", "description", "ingredients"],
       additionalProperties: false,
     },
     userId: { type: "string" },
@@ -38,6 +40,8 @@ async function CreateAbl(req, res) {
 
   // todo photourl pattern
 
+  // todo duplicates
+
   try {
     const isCreator = userUtils.hasAuthority(userId, userUtils.CREATOR);
 
@@ -48,6 +52,18 @@ async function CreateAbl(req, res) {
       return;
     }
 
+    let ingredients = await ingredientDao.listIngredients();
+
+    for (element of data.ingredients) {
+      const match = ingredients.find((ing) => ing.id === element.id);
+      if (match === undefined) {
+        res.status(400).json({
+          errorMessage: "Ingredient with ID:" + element.id + " is missing.",
+        });
+        return;
+      }
+    }
+
     // todo some more checks!
 
     // todo add other attributes!
@@ -55,6 +71,10 @@ async function CreateAbl(req, res) {
     let recipe = {
       ...data,
       starred: [],
+      ingredients: data.ingredients.map((i) => ({
+        ...i,
+        amount: i.amount ? parseInt(i.amount, 10) : 0,
+      })),
       created: new Date().toISOString(),
       createdBy: userId,
     };

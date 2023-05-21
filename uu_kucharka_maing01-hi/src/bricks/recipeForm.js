@@ -7,6 +7,11 @@ import Row from "react-bootstrap/Row";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
+import CreatableSelect from "react-select/creatable";
+
+const AMOUNT_PREFIX = "amount-";
+const UNIT_PREFIX = "unit-";
+
 //import './recipeFilter.css';
 
 class RecipeForm extends Component {
@@ -17,32 +22,33 @@ class RecipeForm extends Component {
         name: "",
         description: "",
         photoUrl: "",
+        ingredients: [],
       },
       validated: false,
     };
   }
-
-  search = (e) => {
-    e.preventDefault();
-    this.props.search();
-  };
 
   handleSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     event.stopPropagation();
 
-    console.log(event);
+    //console.log(event);
 
     this.setState({ validated: true });
 
+    // todo validity for ingredient selects, not empty !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     if (form.checkValidity() === true) {
-      this.props.handleSubmit(this.state.formData);
+      const data = { ...this.state.formData };
+      data.ingredients = data.ingredients.map((i) => ({ amount: i.amount, id: i.ingredient.value }));
+
+      this.props.handleSubmit(data);
     }
   };
 
   handleChange = (event) => {
-    //console.log("handleChang ", event.target.id, event.target.value);
+    console.log("handleChange ", event.target.id, event.target.value);
 
     let newData = { ...this.state.formData };
     newData[event.target.id] = event.target.value;
@@ -50,10 +56,122 @@ class RecipeForm extends Component {
     this.setState({ formData: newData });
   };
 
-  render() {
-    const { inputValues, title, submitTitle, handleClose } = this.props;
-    // console.log("vals",inputValues);
+  handleAmountChange = (event) => {
+    console.log("handleAmountChange ", event.target.id, event.target.value);
 
+    const result = [];
+    const id = event.target.id.substring(AMOUNT_PREFIX.length);
+
+    this.state.formData.ingredients.forEach((i) => {
+      if (i.key == id) {
+        result.push({ ...i, amount: event.target.value });
+      } else {
+        result.push(i);
+      }
+    });
+
+    this.setState({ formData: { ...this.state.formData, ingredients: result } });
+  };
+
+  handleChangeOption = (value, action) => {
+    let result = [];
+
+    this.state.formData.ingredients.forEach((i) => {
+      if (i.key == action.name) {
+        result.push({ ...i, ingredient: value });
+      } else {
+        result.push(i);
+      }
+    });
+
+    this.setState({ formData: { ...this.state.formData, ingredients: result } });
+  };
+
+  renderIngredientRow = (data) => {
+    return (
+      <Row key={data.key}>
+        <Col key="amount" xs={3}>
+          {this.renderIngredientAmount(data)}
+        </Col>
+        <Col key="select" xs={6}>
+          {this.renderIngredientSelect(data)}
+        </Col>
+      </Row>
+    );
+  };
+
+  renderIngredientAmount = (data) => {
+    return (
+      <Form.Group className="mb-3" controlId={AMOUNT_PREFIX + data.key}>
+        <Form.Control
+          type="text"
+          value={data.amount}
+          placeholder="Počet"
+          pattern="^[0-9]+$"
+          onChange={this.handleAmountChange}
+        />
+        <Form.Control.Feedback type="invalid">Zadejte počet.</Form.Control.Feedback>
+      </Form.Group>
+    );
+  };
+
+  isValidNewOption = (data) => {
+    return data && data.length > 2; // todo better filter
+  };
+
+  renderIngredientSelect = (data) => {
+    return (
+      <Form.Group className="mb-3" controlId={data.key} key={data.key}>
+        <CreatableSelect
+          id={data.key}
+          name={data.key}
+          value={data.ingredient}
+          isClearable
+          placeholder={"Vyberte..."}
+          //isMulti
+          options={this.generateOptions()}
+          onCreateOption={(label) => this.handleCreateOption(label, data.key)}
+          onChange={this.handleChangeOption}
+          formatCreateLabel={this.formatCreateLabel}
+          isValidNewOption={this.isValidNewOption}
+        />
+      </Form.Group>
+    );
+  };
+
+  formatCreateLabel(label) {
+    return 'Chci vytvořit "' + label + '"';
+  }
+
+  handleCreateOption(option, id) {
+    console.log("CREATE", option, id);
+  }
+
+  generateOptions = () => {
+    return this.props.ingredientData.map((i) => ({
+      value: i.id,
+      label: i.name,
+    }));
+  };
+
+  renderIngredients = () => {
+    return this.state.formData.ingredients.map((ingredient) => this.renderIngredientRow(ingredient));
+  };
+
+  handleAdd = () => {
+    const { formData } = this.state;
+    const newItem = {
+      key: window.crypto.randomUUID(),
+      ingredient: undefined,
+      amount: "",
+    };
+    const ingredients = [...formData.ingredients, newItem];
+    this.setState({ formData: { ...formData, ingredients: ingredients } });
+  };
+
+  render() {
+    const { title, submitTitle, handleClose } = this.props;
+    //console.log("x", this.props.ingredientData);
     const { formData, validated } = this.state;
 
     return (
@@ -99,6 +217,12 @@ class RecipeForm extends Component {
             </Form.Group>
           </Modal.Body>
 
+          <Modal.Body>
+            <div>Ingredience</div>
+            {this.renderIngredients()}
+            <Button onClick={this.handleAdd}>+ přidat</Button>
+          </Modal.Body>
+
           <Modal.Footer>
             <Button variant="primary" type="submit">
               {submitTitle}
@@ -110,33 +234,6 @@ class RecipeForm extends Component {
         </Form>
       </>
     );
-
-    /*
-    return (
-      <div className="recipeForm">
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Group className="mb-3" controlId="text">
-            <Form.Label>Text</Form.Label>
-            <Form.Control
-              type="text"
-              value={this.props.inputValues.text}
-              placeholder="text"
-              onChange={this.handleChange}
-              onKeyPress={() => console.log("x")}
-            />
-          </Form.Group>
-
-          <Form.Group className="mb-3" id="formGridCheckbox">
-            <Form.Check type="checkbox" label="Oblíbené" />
-          </Form.Group>
-
-          <Button variant="primary" onClick={this.search}>
-            Hledat
-          </Button>
-        </Form>
-      </div>
-    );
-*/
   }
 }
 

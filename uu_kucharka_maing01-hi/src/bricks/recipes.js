@@ -1,5 +1,5 @@
 import { Component } from "react";
-import CreatableSelect from "react-select/creatable";
+
 import IdentityContext from "../core/identity-context.js";
 
 import Button from "react-bootstrap/Button";
@@ -18,12 +18,6 @@ class Recipes extends Component {
       filterData: { text: "" },
       detailModal: false,
       createModal: false,
-
-      // todo modal + modaldata --- todo change
-      ingredientOptions: [
-        { value: "jedna", label: "buřt" },
-        { value: "druha", label: "cibule" },
-      ],
     };
   }
 
@@ -101,10 +95,6 @@ class Recipes extends Component {
     this.setState({ filterData: newData });
   };
 
-  formatCreateLabel(label) {
-    //return "Chci vyrobit " + label;
-  }
-
   handleShowDetail = (data) => this.setState({ detailModal: data });
 
   handleCloseDetail = () => this.setState({ detailModal: false });
@@ -119,8 +109,15 @@ class Recipes extends Component {
   };
 
   renderCreate = () => {
+    const { ingredientData } = this.props;
     if (this.state.createModal) {
-      return <RecipeCreate handleSubmit={this.handleSubmitCreate} handleClose={this.handleCloseCreate} />;
+      return (
+        <RecipeCreate
+          ingredientData={ingredientData}
+          handleSubmit={this.handleSubmitCreate}
+          handleClose={this.handleCloseCreate}
+        />
+      );
     }
   };
 
@@ -154,22 +151,6 @@ class Recipes extends Component {
         {this.renderDetail()}
         {this.renderCreate()}
 
-        <br />
-        <div>testovací select</div>
-
-        <CreatableSelect
-          isClearable
-          isMulti
-          options={ingredientOptions}
-          onCreateOption={this.handleCreate}
-          onChange={this.handleChange}
-          formatCreateLabel={this.formatCreateLabel}
-          isValidNewOption={() => false}
-        />
-
-        <br />
-        <br />
-        <br />
         <br />
       </div>
     );

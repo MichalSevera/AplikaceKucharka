@@ -7,11 +7,16 @@ const crypto = require("crypto");
 const rf = fs.promises.readFile;
 const wf = fs.promises.writeFile;
 
-const DEFAULT_STORAGE_PATH = path.join(__dirname, "../storage/ingredients.json");
+const DEFAULT_STORAGE_PATH = path.join(
+  __dirname,
+  "../storage/ingredients.json"
+);
 
 class IngredientsDao {
   constructor(storagePath) {
-    this.ingredientsStoragePath = storagePath ? storagePath : DEFAULT_STORAGE_PATH;
+    this.ingredientsStoragePath = storagePath
+      ? storagePath
+      : DEFAULT_STORAGE_PATH;
   }
 
   async createIngredient(ingredient) {
@@ -25,7 +30,10 @@ class IngredientsDao {
 
     ingredient.id = crypto.randomBytes(8).toString("hex");
     ingredientList.push(ingredient);
-    await wf(this._getStorageLocation(), JSON.stringify(ingredientList, null, 2));
+    await wf(
+      this._getStorageLocation(),
+      JSON.stringify(ingredientList, null, 2)
+    );
     return ingredient;
   }
 
@@ -49,7 +57,7 @@ class IngredientsDao {
         console.error("No storage found at " + this._getStorageLocation());
       }
       throw new Error(
-          "Unable to read from storage. " + this._getStorageLocation()
+        "Unable to read from storage. " + this._getStorageLocation()
       );
     }
     return resultList;
