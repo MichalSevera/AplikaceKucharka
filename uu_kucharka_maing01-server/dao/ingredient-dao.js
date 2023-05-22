@@ -20,8 +20,8 @@ class IngredientsDao {
   }
 
   async createIngredient(ingredient) {
-    let ingredientList = await this._loadAllIngredients();
-    let duplicate = ingredientList.find(
+    let ingredientsList = await this._loadAllIngredients();
+    let duplicate = ingredientsList.find(
       (item) => item.name === ingredient.name
     );
     if (duplicate) {
@@ -29,11 +29,9 @@ class IngredientsDao {
     }
 
     ingredient.id = crypto.randomBytes(8).toString("hex");
-    ingredientList.push(ingredient);
-    await wf(
-      this._getStorageLocation(),
-      JSON.stringify(ingredientList, null, 2)
-    );
+    ingredientsList.push(ingredient);
+
+    await this._saveAllIngredients(ingredientsList);
     return ingredient;
   }
 
@@ -46,6 +44,16 @@ class IngredientsDao {
     let ingredientsList = await this._loadAllIngredients();
     const result = ingredientsList.find((b) => b.id === id);
     return result;
+  }
+
+  async deleteIngredient(id) {
+    let ingredientsList = await this._loadAllIngredients();
+    ingredientsList = ingredientsList.filter(
+      (ingredient) => ingredient.id !== id
+    );
+
+    await this._saveAllIngredients(ingredientsList);
+    return;
   }
 
   async _loadAllIngredients() {
@@ -61,6 +69,13 @@ class IngredientsDao {
       );
     }
     return resultList;
+  }
+
+  async _saveAllIngredients(ingredientsList) {
+    await wf(
+      this._getStorageLocation(),
+      JSON.stringify(ingredientsList, null, 2)
+    );
   }
 
   _getStorageLocation() {
