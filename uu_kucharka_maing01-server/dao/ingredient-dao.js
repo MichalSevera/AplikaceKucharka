@@ -24,6 +24,7 @@ class IngredientsDao {
     let duplicate = ingredientsList.find(
       (item) => item.name === ingredient.name
     );
+
     if (duplicate) {
       throw `Ingredient with name ${ingredient.name} already exists in db.`;
     }
@@ -44,6 +45,24 @@ class IngredientsDao {
     let ingredientsList = await this._loadAllIngredients();
     const result = ingredientsList.find((b) => b.id === id);
     return result;
+  }
+
+  async updateIngredient(ingredient) {
+    let ingredientsList = await this._loadAllIngredients();
+
+    const igredientIndex = ingredientsList.findIndex(
+      (b) => b.id === ingredient.id
+    );
+    if (igredientIndex < 0) {
+      throw new Error(`Student with given id ${student.id} does not exists.`);
+    } else {
+      ingredientsList[igredientIndex] = {
+        ...ingredientsList[igredientIndex],
+        ...ingredient,
+      };
+    }
+    await this._saveAllIngredients(ingredientsList);
+    return;
   }
 
   async deleteIngredient(id) {
