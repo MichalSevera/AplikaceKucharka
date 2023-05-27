@@ -30,6 +30,7 @@ class RecipeCreate extends Component {
           ingredientData={this.props.ingredientData}
           handleClose={this.handleClose}
           handleSubmit={this.handleSubmit}
+          handleIngredientCreate={this.props.handleIngredientCreate}
         />
       </Modal>
     );

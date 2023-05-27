@@ -38,10 +38,30 @@ class DataProvider extends Component {
       });
   };
 
+  _sortIngredients = (data) => {
+    data.sort((a, b) => {
+      return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+    });
+    return data;
+  };
+
+  createIngredientCall = (dtoIn, callback, errorCallback) => {
+    Calls.createIngredient(dtoIn)
+      .then((responseData) => {
+        this.setState({ ingredientData: this._sortIngredients([...this.state.ingredientData, responseData.data]) });
+
+        callback && callback(responseData.data);
+      })
+      .catch((err) => {
+        console.log("INGREDIENT ERROR HAPPENED", err);
+        errorCallback && errorCallback(err);
+      });
+  };
+
   listIngedientCall = (dtoIn) => {
     Calls.listIngredients(dtoIn)
       .then((responseData) => {
-        this.setState({ ingredientData: responseData.data });
+        this.setState({ ingredientData: this._sortIngredients(responseData.data) });
       })
       .catch((err) => console.log("INGREDIENT ERROR HAPPENED", err));
     // todo set states // OK, PENDING, ERROR
@@ -66,6 +86,7 @@ class DataProvider extends Component {
       calls: {
         listRecipes: this.listRecipesCall,
         createRecipe: this.createRecipeCall,
+        createIngredient: this.createIngredientCall,
         listIngredients: this.listIngedientCall,
         addAlert: this.addAlert,
       },

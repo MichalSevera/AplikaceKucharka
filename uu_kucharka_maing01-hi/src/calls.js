@@ -11,16 +11,17 @@ const instance = axios.create({
 const Calls = {
   listRecipes(dtoIn) {
     console.log("calling listRecipes", dtoIn);
-    //const commandUri = Calls.getCommandUri("recipe/list");
-
     return instance.get("recipe/list", { params: dtoIn });
-    // takhle se posilaji params:  return instance.get("recipe/list", {params: {msg: "buřt"}} );
-    //return Calls.call("put", commandUri, dtoIn);
   },
 
   createRecipe(dtoIn) {
     console.log("calling createRecipe", dtoIn);
     return instance.post("recipe/create", dtoIn);
+  },
+
+  createIngredient(dtoIn) {
+    console.log("calling createIngredient", dtoIn);
+    return instance.post("ingredient/create", dtoIn);
   },
 
   listIngredients(dtoIn) {

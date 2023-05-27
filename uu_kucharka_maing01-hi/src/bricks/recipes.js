@@ -74,8 +74,27 @@ class Recipes extends Component {
     this.props.calls.createRecipe(dtoIn, callback, errorCallback);
   };
 
-  handleCreate(value) {
-    console.log("handleCreate", value);
+  handleIngredientCreate = (data, formCallback) => {
+    console.log("handleIngredientCreate CALLED", data);
+
+    const { identity } = this.context;
+    let dtoIn = {
+      userId: identity.uuIdentity,
+      name: data,
+    };
+
+    const callback = (data) => {
+      this.props.calls.addAlert({ message: 'Ingredience "' + data.name + '" byla vytvořena.', priority: "success" });
+      formCallback(data);
+    };
+
+    const errorCallback = (data) => {
+      this.props.calls.addAlert({ header: "Chyba", message: "Vytvoření ingredience selhalo.", priority: "error" });
+    };
+
+    //
+    this.props.calls.createIngredient(dtoIn, callback, errorCallback);
+
     //
 
     return;
@@ -85,7 +104,7 @@ class Recipes extends Component {
       setOptions((prev) => [...prev, newOption]);
       setValue(newOption);
     }, 1000);
-  }
+  };
 
   handleChange = (event) => {
     //console.log("handleChang ", event.target.id, event.target.value);
@@ -116,6 +135,7 @@ class Recipes extends Component {
           ingredientData={ingredientData}
           handleSubmit={this.handleSubmitCreate}
           handleClose={this.handleCloseCreate}
+          handleIngredientCreate={this.handleIngredientCreate}
         />
       );
     }

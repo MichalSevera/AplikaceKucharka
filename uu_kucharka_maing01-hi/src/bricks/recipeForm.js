@@ -78,6 +78,8 @@ class RecipeForm extends Component {
   handleChangeOption = (value, action) => {
     let result = [];
 
+    console.log("+++", value, action, action.name);
+
     this.state.formData.ingredients.forEach((i) => {
       if (i.key == action.name) {
         result.push({ ...i, ingredient: value });
@@ -145,15 +147,21 @@ class RecipeForm extends Component {
     return 'Chci vytvořit "' + label + '"';
   }
 
-  handleCreateOption(option, id) {
-    console.log("CREATE", option, id);
+  handleCreateOption(data, id) {
+    const callback = (data) => {
+      this.handleChangeOption(this.optionMapper(data), { name: id });
+    };
+
+    this.props.handleIngredientCreate(data, callback);
   }
 
+  optionMapper = (i) => ({
+    value: i.id,
+    label: i.name,
+  });
+
   generateOptions = () => {
-    return this.props.ingredientData.map((i) => ({
-      value: i.id,
-      label: i.name,
-    }));
+    return this.props.ingredientData.map(this.optionMapper);
   };
 
   renderIngredients = () => {
@@ -173,7 +181,6 @@ class RecipeForm extends Component {
 
   render() {
     const { title, submitTitle, handleClose } = this.props;
-    //console.log("x", this.props.ingredientData);
     const { formData, validated } = this.state;
 
     return (
