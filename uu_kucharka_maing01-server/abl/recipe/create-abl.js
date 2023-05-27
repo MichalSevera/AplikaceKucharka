@@ -4,8 +4,9 @@ const ingredientDao = require("../../dao/ingredient-dao");
 
 const userUtils = require("../UserUtils");
 
+const URL_PATTERN = "^(https:|http:)S*$"; //pls synchronizovat s FE :)
+
 let schema = {
-  // todo some more checks, add properties!
   type: "object",
   properties: {
     data: {
@@ -13,8 +14,8 @@ let schema = {
       properties: {
         name: { type: "string", maxLength: 80 },
         description: { type: "string", maxLength: 2000 },
-        photoUrl: { type: "string", maxLength: 255 },
-        ingredients: { type: "array" }, //TODO items: {type: "integer"}}
+        photoUrl: { type: "string", maxLength: 255, pattern: URL_PATTERN },
+        ingredients: { type: "array" }, //TODO validate ingredients size and : {type: "integer"...}}
       },
       required: ["name", "description", "ingredients"],
       additionalProperties: false,
@@ -38,10 +39,6 @@ async function CreateAbl(req, res) {
     return;
   }
 
-  // todo photourl pattern
-
-  // todo duplicates
-
   try {
     const isCreator = userUtils.hasAuthority(userId, userUtils.CREATOR);
 
@@ -64,7 +61,13 @@ async function CreateAbl(req, res) {
       }
     }
 
-    // todo some more checks!
+    const ids = new Set(data.ingredients.map((ing) => ing.id));
+    if (ids.size !== data.ingredients.length) {
+      res.status(400).json({
+        errorMessage: "Recipe has ingredient duplicates.",
+      });
+      return;
+    }
 
     // todo add other attributes!
 

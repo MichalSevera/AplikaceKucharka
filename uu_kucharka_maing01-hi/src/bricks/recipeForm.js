@@ -12,6 +12,8 @@ import CreatableSelect from "react-select/creatable";
 const AMOUNT_PREFIX = "amount-";
 const UNIT_PREFIX = "unit-";
 
+const URL_PATTERN = "^(https:|http:)S*$"; //pls synchronizovat s BE :)
+
 //import './recipeFilter.css';
 
 class RecipeForm extends Component {
