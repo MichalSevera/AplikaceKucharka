@@ -19,9 +19,11 @@ class Home extends Component {
   render() {
     return (
       <div className="page">
-        <RouteBar>naša boží appka</RouteBar>
-        <h1 className="nadpis">Enjoy our fancy recipes :) </h1>
-
+        <RouteBar>
+          <b>Kuchařka pro pokrmy do 30 minut</b>
+        </RouteBar>
+        <br />
+        <br />
         <DataProvider>
           <Recipes />
         </DataProvider>

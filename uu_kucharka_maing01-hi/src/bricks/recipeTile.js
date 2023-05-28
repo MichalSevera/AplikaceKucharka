@@ -9,6 +9,9 @@ import Card from "react-bootstrap/Card";
 
 //import './recipeTable.css';
 
+const DEFAULT_IMAGE =
+  "https://images.pexels.com/photos/291767/pexels-photo-291767.jpeg?auto=compress&cs=tinysrgb&w=300";
+
 class RecipeTile extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +26,7 @@ class RecipeTile extends Component {
     return (
       <Col key={item.id} className="p-3">
         <Card border={"primary"}>
-          {item.photoUrl ? <Card.Img variant="top" src={item.photoUrl} /> : ""}
+          <Card.Img variant="top" src={item.photoUrl ? item.photoUrl : DEFAULT_IMAGE} />
           <Card.Body>
             <Card.Title>{item.name}</Card.Title>
             <Card.Text>{item.description}</Card.Text>
