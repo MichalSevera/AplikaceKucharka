@@ -85,6 +85,8 @@ class RecipeDetail extends Component {
           <br />
           {item.longDesc}
         </Modal.Body>
+        <hr />
+        <Modal.Body className={"pre"}>{item.text}</Modal.Body>
         {item.ingredients && item.ingredients.length > 0 ? <Modal.Body>{this.renderIngredients()}</Modal.Body> : ""}
         <Modal.Body>
           <Plus4U5Elements.PersonItem uuIdentity={item.createdBy} />

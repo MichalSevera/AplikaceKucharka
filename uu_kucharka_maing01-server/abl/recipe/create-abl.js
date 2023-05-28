@@ -13,11 +13,12 @@ let schema = {
       type: "object",
       properties: {
         name: { type: "string", maxLength: 80 },
-        description: { type: "string", maxLength: 2000 },
+        description: { type: "string", maxLength: 1000 },
+        text: { type: "string", maxLength: 5000 },
         photoUrl: { type: "string", maxLength: 255 },
         ingredients: { type: "array" }, //TODO validate ingredients size and : {type: "integer"...}}
       },
-      required: ["name", "description", "ingredients"],
+      required: ["name", "description", "text", "ingredients"],
       additionalProperties: false,
     },
     userId: { type: "string" },
@@ -41,7 +42,7 @@ async function CreateAbl(req, res) {
 
   if (!valid) {
     res.status(400).json({
-      errorMessage: "Validation of input failed.", // pattern: URL_PATTERN
+      errorMessage: "Validation of input failed.", // todo !!! pattern: URL_PATTERN
       params: req.body,
       reason: ajv.errors,
     });

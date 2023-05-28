@@ -18,7 +18,7 @@ class RecipeDelete extends Component {
     const title = "Smazat recept";
 
     return (
-      <Modal show={true} size="lg" onHide={handleClose}>
+      <Modal show={true} size="md" onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>

@@ -85,7 +85,8 @@ class RecipesDao {
         (item) =>
           (item.name && item.name.toLowerCase().includes(filter.text)) ||
           (item.description &&
-            item.description.toLowerCase().includes(filter.text))
+            item.description.toLowerCase().includes(filter.text)) ||
+          (item.text && item.text.toLowerCase().includes(filter.text))
       );
     }
     return recipesList;

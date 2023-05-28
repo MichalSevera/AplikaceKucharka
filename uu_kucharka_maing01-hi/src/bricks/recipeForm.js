@@ -23,6 +23,7 @@ class RecipeForm extends Component {
       formData: {
         name: "",
         description: "",
+        text: "",
         photoUrl: "",
         ingredients: [],
       },
@@ -78,7 +79,7 @@ class RecipeForm extends Component {
   handleChangeOption = (value, action) => {
     let result = [];
 
-    console.log("+++", value, action, action.name);
+    //console.log("+++", value, action, action.name);
 
     this.state.formData.ingredients.forEach((i) => {
       if (i.key == action.name) {
@@ -200,7 +201,7 @@ class RecipeForm extends Component {
                 placeholder="Název receptu"
                 onChange={this.handleChange}
               />
-              <Form.Control.Feedback type="invalid">Jujky! Asi chyba.</Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">Zadejte název</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="description">
               <Form.Label>Popis</Form.Label>
@@ -211,7 +212,7 @@ class RecipeForm extends Component {
                 placeholder="Krátký popis"
                 onChange={this.handleChange}
               />
-              <Form.Control.Feedback type="invalid">Ale ne!</Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">Zadejte popis</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="photoUrl">
               <Form.Label>Obrázek</Form.Label>
@@ -222,7 +223,13 @@ class RecipeForm extends Component {
                 pattern="^(https:|http:)\S*$"
                 onChange={this.handleChange}
               />
-              <Form.Control.Feedback type="invalid">Toto je jaksi blbě.</Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">Nevalidní url</Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="text">
+              <Form.Label>Text receptu</Form.Label>
+              <Form.Control as="textarea" rows={5} value={formData.text} required onChange={this.handleChange} />
+              <Form.Control.Feedback type="invalid">Vyplňte text receptu</Form.Control.Feedback>
             </Form.Group>
           </Modal.Body>
 
