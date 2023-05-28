@@ -38,6 +38,17 @@ class DataProvider extends Component {
       });
   };
 
+  deleteRecipeCall = (dtoIn, callback, errorCallback) => {
+    Calls.deleteRecipe(dtoIn)
+      .then((responseData) => {
+        callback && callback(responseData.data);
+      })
+      .catch((err) => {
+        console.log("RECIPE ERROR HAPPENED", err);
+        errorCallback && errorCallback(err);
+      });
+  };
+
   _sortIngredients = (data) => {
     data.sort((a, b) => {
       return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
@@ -86,6 +97,7 @@ class DataProvider extends Component {
       calls: {
         listRecipes: this.listRecipesCall,
         createRecipe: this.createRecipeCall,
+        deleteRecipe: this.deleteRecipeCall,
         createIngredient: this.createIngredientCall,
         listIngredients: this.listIngedientCall,
         addAlert: this.addAlert,

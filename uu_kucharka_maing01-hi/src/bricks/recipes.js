@@ -8,8 +8,11 @@ import RecipeFilter from "./recipeFilter.js";
 import RecipeTable from "./recipeTable.js";
 import RecipeDetail from "./recipeDetail.js";
 import RecipeCreate from "./recipeCreate.js";
+import RecipeDelete from "./recipeDelete.js";
 
 import "./recipes.css";
+
+const ALERT_SUCCESS_DURATION = 2500;
 
 class Recipes extends Component {
   constructor(props) {
@@ -18,6 +21,7 @@ class Recipes extends Component {
       filterData: { text: "" },
       detailModal: false,
       createModal: false,
+      deleteModal: false,
     };
   }
 
@@ -62,7 +66,11 @@ class Recipes extends Component {
 
     const callback = (data) => {
       this.setState({ createModal: false });
-      this.props.calls.addAlert({ message: 'Recept "' + data.name + '" byl vytvořen.', priority: "success" });
+      this.props.calls.addAlert({
+        message: 'Recept "' + data.name + '" byl vytvořen.',
+        priority: "success",
+        durationMs: ALERT_SUCCESS_DURATION,
+      });
 
       this.search(); // todo with current pagination
     };
@@ -84,7 +92,11 @@ class Recipes extends Component {
     };
 
     const callback = (data) => {
-      this.props.calls.addAlert({ message: 'Ingredience "' + data.name + '" byla vytvořena.', priority: "success" });
+      this.props.calls.addAlert({
+        message: 'Ingredience "' + data.name + '" byla vytvořena.',
+        priority: "success",
+        durationMs: ALERT_SUCCESS_DURATION,
+      });
       formCallback(data);
     };
 
@@ -92,18 +104,7 @@ class Recipes extends Component {
       this.props.calls.addAlert({ header: "Chyba", message: "Vytvoření ingredience selhalo.", priority: "error" });
     };
 
-    //
     this.props.calls.createIngredient(dtoIn, callback, errorCallback);
-
-    //
-
-    return;
-    setTimeout(() => {
-      const newOption = { value: "123", label: value };
-      setIsLoading(false);
-      setOptions((prev) => [...prev, newOption]);
-      setValue(newOption);
-    }, 1000);
   };
 
   handleChange = (event) => {
@@ -118,12 +119,51 @@ class Recipes extends Component {
 
   handleCloseDetail = () => this.setState({ detailModal: false });
 
+  handleShowDelete = (data) => {
+    this.setState({ deleteModal: data, detailModal: false });
+    // todo save detail data pro návrat?
+  };
+
+  handleCloseDelete = () => this.setState({ deleteModal: false });
+
+  handleSubmitDelete = (data) => {
+    const { identity } = this.context;
+    let dtoIn = {
+      userId: identity.uuIdentity,
+      id: data.id,
+    };
+
+    const callback = (data) => {
+      this.setState({ deleteModal: false });
+      this.props.calls.addAlert({
+        message: 'Recept "' + data.name + '" byl smazán.',
+        priority: "success",
+        durationMs: ALERT_SUCCESS_DURATION,
+      });
+
+      this.search(); // todo with current pagination
+    };
+
+    const errorCallback = (data) => {
+      this.props.calls.addAlert({ header: "Chyba", message: "Smazání receptu selhalo.", priority: "error" });
+    };
+
+    this.props.calls.deleteRecipe(dtoIn, callback, errorCallback);
+  };
+
   renderDetail = () => {
     const { ingredientData } = this.props;
     const { detailModal } = this.state;
 
     if (this.state.detailModal) {
-      return <RecipeDetail item={detailModal} ingredientData={ingredientData} handleClose={this.handleCloseDetail} />;
+      return (
+        <RecipeDetail
+          item={detailModal}
+          ingredientData={ingredientData}
+          handleClose={this.handleCloseDetail}
+          handleDelete={this.handleShowDelete}
+        />
+      );
     }
   };
 
@@ -136,6 +176,19 @@ class Recipes extends Component {
           handleSubmit={this.handleSubmitCreate}
           handleClose={this.handleCloseCreate}
           handleIngredientCreate={this.handleIngredientCreate}
+        />
+      );
+    }
+  };
+
+  renderDelete = () => {
+    const { deleteModal } = this.state;
+    if (deleteModal) {
+      return (
+        <RecipeDelete
+          item={this.state.deleteModal}
+          handleConfirm={this.handleSubmitDelete}
+          handleClose={this.handleCloseDelete}
         />
       );
     }
@@ -170,7 +223,7 @@ class Recipes extends Component {
         <br />
         {this.renderDetail()}
         {this.renderCreate()}
-
+        {this.renderDelete()}
         <br />
       </div>
     );

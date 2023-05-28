@@ -5,6 +5,8 @@ import Form from "react-bootstrap/Form";
 
 import Plus4U5Elements from "uu_plus4u5g02-elements";
 
+import IdentityContext from "../core/identity-context.js";
+
 const SERVING_MIN = 1;
 const SERVING_MAX = 12;
 const SERVING_DEFAULT = 4;
@@ -47,13 +49,11 @@ class RecipeDetail extends Component {
   };
 
   renderIngredients() {
-    // should use preprepared map...
     const { item, ingredientData } = this.props;
     const { serving } = this.state;
 
+    // should use preprepared map...
     const ingredientMap = new Map(ingredientData.map((obj) => [obj.id, obj]));
-
-    //console.log("im", ingredientMap);
 
     return (
       <>
@@ -64,11 +64,16 @@ class RecipeDetail extends Component {
     );
   }
 
+  handleDelete = () => {
+    const { item, handleDelete } = this.props;
+    handleDelete(item);
+  };
+
   render() {
-    // todo nicer spaces
+    const { identity } = this.context;
     const { item, handleClose } = this.props;
 
-    //console.log(item.ingredients);
+    const isEditable = item.createdBy === identity.uuIdentity || identity.authorities.includes("ADMIN");
 
     return (
       <Modal show={true} size="md" onHide={handleClose}>
@@ -86,16 +91,25 @@ class RecipeDetail extends Component {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Zavřít
-          </Button>
+          {isEditable && (
+            <Button variant="secondary" onClick={handleClose}>
+              Edit
+            </Button>
+          )}
+          {isEditable && (
+            <Button variant="secondary" onClick={this.handleDelete}>
+              Smazat
+            </Button>
+          )}
           <Button variant="primary" onClick={handleClose}>
-            Edit
+            Zavřít
           </Button>
         </Modal.Footer>
       </Modal>
     );
   }
 }
+
+RecipeDetail.contextType = IdentityContext;
 
 export default RecipeDetail;
