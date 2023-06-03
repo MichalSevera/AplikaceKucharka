@@ -10,6 +10,12 @@ class DataProvider extends Component {
 
     this.state = {
       recipeData: [],
+      recipePageData: {
+        pageNumber: 1,
+        pageSize: 3,
+        totalItems: 0,
+        totalPages: 0,
+      },
       ingredientData: [],
     };
   }
@@ -17,9 +23,10 @@ class DataProvider extends Component {
   listRecipesCall = (dtoIn) => {
     Calls.listRecipes(dtoIn)
       .then((responseData) => {
-        //console.log("data:", responseData.data);
+        //console.log("data:", responseData.data.pagination);
 
-        this.setState({ recipeData: responseData.data.data }); // different incomming structure
+        this.setState({ recipeData: responseData.data.data, recipePageData: responseData.data.pagination }); // different incomming structure
+
         // todo set pagination to state!!!
       })
       .catch((err) => console.log("RECIPE ERROR HAPPENED", err));
@@ -89,10 +96,11 @@ class DataProvider extends Component {
   };
 
   render() {
-    const { recipeData, ingredientData } = this.state;
+    const { recipeData, ingredientData, recipePageData } = this.state;
 
     const props = {
       recipeData,
+      recipePageData,
       ingredientData,
       calls: {
         listRecipes: this.listRecipesCall,

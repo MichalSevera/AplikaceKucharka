@@ -9,10 +9,12 @@ import RecipeTable from "./recipeTable.js";
 import RecipeDetail from "./recipeDetail.js";
 import RecipeCreate from "./recipeCreate.js";
 import RecipeDelete from "./recipeDelete.js";
+import Pagination from "./pagination.js";
 
 import "./recipes.css";
 
 const ALERT_SUCCESS_DURATION = 2500;
+const PAGE_SIZE = 12;
 
 class Recipes extends Component {
   constructor(props) {
@@ -41,12 +43,16 @@ class Recipes extends Component {
     }
   };
 
-  search = () => {
-    this.props.calls.listRecipes(this.state.filterData); // todo pagination
+  search = (page = 1) => {
+    this.props.calls.listRecipes({ ...this.state.filterData, "page-size": PAGE_SIZE, "page-number": page });
   };
 
   onPageChange = (page) => {
-    //todo
+    this.search(page);
+  };
+
+  onRefresh = () => {
+    this.search(this.props.recipePageData.pageNumber);
   };
 
   handleShowCreate = () => {
@@ -72,7 +78,7 @@ class Recipes extends Component {
         durationMs: ALERT_SUCCESS_DURATION,
       });
 
-      this.search(); // todo with current pagination
+      this.onRefresh();
     };
 
     const errorCallback = (data) => {
@@ -108,8 +114,6 @@ class Recipes extends Component {
   };
 
   handleChange = (event) => {
-    //console.log("handleChang ", event.target.id, event.target.value);
-
     let newData = { ...this.state.filterData };
     newData[event.target.id] = event.target.value;
     this.setState({ filterData: newData });
@@ -141,7 +145,7 @@ class Recipes extends Component {
         durationMs: ALERT_SUCCESS_DURATION,
       });
 
-      this.search(); // todo with current pagination
+      this.onRefresh();
     };
 
     const errorCallback = (data) => {
@@ -195,15 +199,12 @@ class Recipes extends Component {
   };
 
   render() {
-    console.log("recipes props", this.props);
-    //console.log("context", this.context);
+    console.log("recipes props X", this.props);
 
     const { identity } = this.context;
-    //console.log(identity);
+    const { recipeData, ingredientData, recipePageData } = this.props;
 
-    const { recipeData, ingredientData } = this.props;
-
-    const { ingredientOptions, filterData, detailModal } = this.state;
+    const { filterData } = this.state;
 
     return (
       <div className="page">
@@ -219,7 +220,7 @@ class Recipes extends Component {
         <RecipeFilter search={this.search} handleChange={this.handleChange} inputValues={filterData} />
         <RecipeTable recipeData={recipeData} ingredientData={ingredientData} handleShowDetail={this.handleShowDetail} />
         <br />
-        <div>a tady bude Pagination</div>
+        <Pagination data={recipePageData} onPageChange={this.onPageChange} />
         <br />
         {this.renderDetail()}
         {this.renderCreate()}

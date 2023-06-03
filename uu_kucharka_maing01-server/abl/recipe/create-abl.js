@@ -40,11 +40,13 @@ async function CreateAbl(req, res) {
     return;
   }
 
-  if (!valid) {
+  const re = new RegExp(URL_PATTERN, "i");
+  const validUrl = re.test(data.photoUrl);
+  if (data.photoUrl && data.photoUrl.length > 0 && !validUrl) {
     res.status(400).json({
-      errorMessage: "Validation of input failed.", // todo !!! pattern: URL_PATTERN
+      errorMessage: "Validation of input failed.",
       params: req.body,
-      reason: ajv.errors,
+      reason: "Invalid photoUrl",
     });
     return;
   }
@@ -78,8 +80,6 @@ async function CreateAbl(req, res) {
       });
       return;
     }
-
-    // todo add other attributes!
 
     let recipe = {
       ...data,

@@ -30,7 +30,7 @@ class RecipeDetail extends Component {
 
     return (
       <div key={item.id}>
-        {this.recountAmount(item.amount, serving)} {ingredient.name}
+        {this.recountAmount(item.amount, serving)} {item.unit} {ingredient.name}
       </div>
     );
   }

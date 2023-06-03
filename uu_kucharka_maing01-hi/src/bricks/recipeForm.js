@@ -36,15 +36,13 @@ class RecipeForm extends Component {
     event.preventDefault();
     event.stopPropagation();
 
-    //console.log(event);
-
     this.setState({ validated: true });
 
     // todo validity for ingredient selects, not empty !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     if (form.checkValidity() === true) {
       const data = { ...this.state.formData };
-      data.ingredients = data.ingredients.map((i) => ({ amount: i.amount, id: i.ingredient.value }));
+      data.ingredients = data.ingredients.map((i) => ({ amount: i.amount, unit: i.unit, id: i.ingredient.value }));
 
       this.props.handleSubmit(data);
     }
@@ -76,15 +74,43 @@ class RecipeForm extends Component {
     this.setState({ formData: { ...this.state.formData, ingredients: result } });
   };
 
+  handleUnitChange = (event) => {
+    console.log("handleUnitChange ", event.target.id, event.target.value);
+
+    const result = [];
+    const id = event.target.id.substring(UNIT_PREFIX.length);
+
+    this.state.formData.ingredients.forEach((i) => {
+      if (i.key == id) {
+        result.push({ ...i, unit: event.target.value });
+      } else {
+        result.push(i);
+      }
+    });
+
+    this.setState({ formData: { ...this.state.formData, ingredients: result } });
+  };
+
   handleChangeOption = (value, action) => {
     let result = [];
-
-    //console.log("+++", value, action, action.name);
 
     this.state.formData.ingredients.forEach((i) => {
       if (i.key == action.name) {
         result.push({ ...i, ingredient: value });
       } else {
+        result.push(i);
+      }
+    });
+
+    this.setState({ formData: { ...this.state.formData, ingredients: result } });
+  };
+
+  deleteRow = (key) => {
+    console.log("deleteRow", key, this.state);
+    let result = [];
+
+    this.state.formData.ingredients.forEach((i) => {
+      if (i.key !== key) {
         result.push(i);
       }
     });
@@ -98,8 +124,16 @@ class RecipeForm extends Component {
         <Col key="amount" xs={3}>
           {this.renderIngredientAmount(data)}
         </Col>
-        <Col key="select" xs={6}>
+        <Col key="unit" xs={3}>
+          {this.renderIngredientUnit(data)}
+        </Col>
+        <Col key="select" xs={5}>
           {this.renderIngredientSelect(data)}
+        </Col>
+        <Col key="del" xs={1}>
+          <Button variant="secondary" onClick={() => this.deleteRow(data.key)}>
+            x
+          </Button>
         </Col>
       </Row>
     );
@@ -116,6 +150,15 @@ class RecipeForm extends Component {
           onChange={this.handleAmountChange}
         />
         <Form.Control.Feedback type="invalid">Zadejte počet.</Form.Control.Feedback>
+      </Form.Group>
+    );
+  };
+
+  renderIngredientUnit = (data) => {
+    return (
+      <Form.Group className="mb-3" controlId={UNIT_PREFIX + data.key}>
+        <Form.Control type="text" value={data.unit} placeholder="Jednotka" onChange={this.handleUnitChange} />
+        <Form.Control.Feedback type="invalid">Zadejte jednotku.</Form.Control.Feedback>
       </Form.Group>
     );
   };
@@ -226,7 +269,7 @@ class RecipeForm extends Component {
               <Form.Control.Feedback type="invalid">Nevalidní url</Form.Control.Feedback>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="text">
+            <Form.Group controlId="text">
               <Form.Label>Text receptu</Form.Label>
               <Form.Control as="textarea" rows={5} value={formData.text} required onChange={this.handleChange} />
               <Form.Control.Feedback type="invalid">Vyplňte text receptu</Form.Control.Feedback>
