@@ -5,8 +5,8 @@ const UserUtils = {
   ADMIN,
   CREATOR,
   data: { // udržujte synchronizaci s development.json
-    [ADMIN] : ["15-8545-1"],
-    [CREATOR] : ["15-8545-1"]
+    [ADMIN] : ["15-8545-1", "88-2054-1"],
+    [CREATOR] : ["15-8545-1", "88-2054-1"]
   },
 
   hasAuthority: function(userId, authority){

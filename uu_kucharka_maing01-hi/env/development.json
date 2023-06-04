@@ -6,7 +6,7 @@
   "uu5Environment": {
     "name": "uuKucharka", 
     "callsBaseUri": "http://localhost:8000",
-    "authorities": [{"authority": "CREATOR", "identities": ["15-8545-1"]},{"authority": "ADMIN", "identities": ["15-8545-1"]}],
+    "authorities": [{"authority": "CREATOR", "identities": ["15-8545-1", "88-2054-1"]},{"authority": "ADMIN", "identities": ["15-8545-1", "88-2054-1"]}],
     "uu5g05_trustedUriRegExp": "^https?://localhost(:[0-9]+)?/|^https://([a-z][a-z0-9\\-]{0,61}[a-z0-9][.]|[a-z][.])?plus4u[.]net(:[0-9]+)?(?=[/#?]|$)"
   }
 }
