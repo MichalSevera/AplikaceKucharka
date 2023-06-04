@@ -14,3 +14,5 @@ zkouska Artem
 ...
 ja neco udelal a cast se smazala, 
 tak to vracim kopirovanim do vs kodu zpet
+
+TEST-TEST Ctibor
