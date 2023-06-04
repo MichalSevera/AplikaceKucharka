@@ -12,6 +12,9 @@ let schema = {
       type: "string",
       pattern: "^[0-9]{1,5}$",
     },
+    starred: {
+      type: "string",
+    },
     text: { type: "string" },
   },
   required: [],
@@ -43,12 +46,14 @@ async function ListAbl(req, res) {
   let pageSize = req.query["page-size"]
     ? parseInt(req.query["page-size"], 10)
     : 24;
-  //console.log("page", pageNumber, pageSize);
 
   let filter = {};
-  const { text } = req.query;
+  const { text, starred } = req.query;
   if (text) {
     filter.text = text.toLowerCase();
+  }
+  if (starred) {
+    filter.starred = starred;
   }
 
   try {

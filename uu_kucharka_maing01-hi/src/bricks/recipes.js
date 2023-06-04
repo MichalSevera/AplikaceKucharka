@@ -20,7 +20,7 @@ class Recipes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterData: { text: "" },
+      filterData: { text: "", starred: false },
       detailModal: false,
       createModal: false,
       deleteModal: false,
@@ -44,7 +44,16 @@ class Recipes extends Component {
   };
 
   search = (page = 1) => {
-    this.props.calls.listRecipes({ ...this.state.filterData, "page-size": PAGE_SIZE, "page-number": page });
+    const { filterData } = this.state;
+    const data = { "page-size": PAGE_SIZE, "page-number": page };
+    if (filterData.text.length > 0) {
+      data.text = filterData.text;
+    }
+    if (filterData.starred) {
+      data.starred = this.context.identity.uuIdentity;
+    }
+
+    this.props.calls.listRecipes(data);
   };
 
   onPageChange = (page) => {
@@ -115,7 +124,8 @@ class Recipes extends Component {
 
   handleChange = (event) => {
     let newData = { ...this.state.filterData };
-    newData[event.target.id] = event.target.value;
+    newData[event.target.id] = event.target.id === "starred" ? event.target.checked : event.target.value;
+
     this.setState({ filterData: newData });
   };
 
