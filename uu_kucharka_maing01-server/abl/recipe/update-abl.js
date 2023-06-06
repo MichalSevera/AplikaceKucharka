@@ -12,13 +12,14 @@ let schema = {
     data: {
       type: "object",
       properties: {
+        id: { type: "string" },
         name: { type: "string", maxLength: 80 },
         description: { type: "string", maxLength: 1000 },
         text: { type: "string", maxLength: 5000 },
         photoUrl: { type: "string", maxLength: 255 },
         ingredients: { type: "array" }, //TODO validate ingredients size and : {type: "integer"...}}
       },
-      required: ["name", "description", "text", "ingredients"],
+      required: ["id", "name", "description", "text", "ingredients"],
       additionalProperties: false,
     },
     userId: { type: "string" },
@@ -26,7 +27,7 @@ let schema = {
   required: ["data", "userId"],
 };
 
-async function CreateAbl(req, res) {
+async function UpdateAbl(req, res) {
   const ajv = new Ajv();
   const { data, userId } = req.body;
   const valid = ajv.validate(schema, req.body);
@@ -52,12 +53,18 @@ async function CreateAbl(req, res) {
   }
 
   try {
-    const isCreator = userUtils.hasAuthority(userId, userUtils.CREATOR);
+    const recipe = await dao.getRecipe(data.id);
 
-    if (!isCreator) {
+    const isAdmin = userUtils.hasAuthority(userId, userUtils.ADMIN);
+    const isCreator = userUtils.hasAuthority(userId, userUtils.CREATOR);
+    const isAuthor = recipe.createdBy === userId;
+
+    console.log(data, recipe, userId);
+
+    if (!isAdmin && !(isCreator && isAuthor)) {
       res
         .status(400)
-        .json({ errorMessage: "You are not allowed to create recipes." });
+        .json({ errorMessage: "You are not allowed to update this recipe." });
       return;
     }
 
@@ -81,22 +88,19 @@ async function CreateAbl(req, res) {
       return;
     }
 
-    let recipe = {
+    let newRecipe = {
       ...data,
-      starred: [],
       ingredients: data.ingredients.map((i) => ({
         ...i,
         amount: i.amount ? parseInt(i.amount, 10) : 0,
       })),
-      created: new Date().toISOString(),
-      createdBy: userId,
     };
 
-    recipe = await dao.createRecipe(recipe);
-    res.json(recipe);
+    newRecipe = await dao.updateRecipe(newRecipe);
+    res.json(newRecipe);
   } catch (e) {
     res.status(500).send(e.message);
   }
 }
 
-module.exports = CreateAbl;
+module.exports = UpdateAbl;

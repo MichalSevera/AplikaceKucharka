@@ -57,7 +57,7 @@ async function ListAbl(req, res) {
   }
 
   try {
-    let recipes = await dao.listRecipes(filter); // todo some filtering
+    let recipes = await dao.listRecipes(filter);
     recipesPage = paginate(recipes, pageSize, pageNumber);
 
     let result = {

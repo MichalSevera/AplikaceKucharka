@@ -59,6 +59,8 @@ class RecipesDao {
       recipesList = this._filterRecipes(recipesList, filter);
     }
 
+    recipesList.sort((a, b) => b.created.localeCompare(a.created));
+
     return recipesList;
   }
 

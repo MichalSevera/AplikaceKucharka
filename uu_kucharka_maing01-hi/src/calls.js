@@ -19,6 +19,11 @@ const Calls = {
     return instance.post("recipe/create", dtoIn);
   },
 
+  updateRecipe(dtoIn) {
+    console.log("calling updateRecipe", dtoIn);
+    return instance.put("recipe/update", dtoIn);
+  },
+
   deleteRecipe(dtoIn) {
     console.log("calling deleteRecipe", dtoIn);
     return instance.delete("recipe/delete", { data: dtoIn });

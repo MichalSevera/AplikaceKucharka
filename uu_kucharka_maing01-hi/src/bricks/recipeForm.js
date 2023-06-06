@@ -12,14 +12,17 @@ import CreatableSelect from "react-select/creatable";
 const AMOUNT_PREFIX = "amount-";
 const UNIT_PREFIX = "unit-";
 
-const URL_PATTERN = "^(https:|http:)S*$"; //pls synchronizovat s BE :)
+const URL_PATTERN = "^(https:|http:)\\S*$"; //pls synchronizovat s BE :)
 
-//import './recipeFilter.css';
+const optionMapper = (i) => ({
+  value: i.id,
+  label: i.name,
+});
 
 class RecipeForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    let state = {
       formData: {
         name: "",
         description: "",
@@ -29,6 +32,40 @@ class RecipeForm extends Component {
       },
       validated: false,
     };
+
+    if (props.item) {
+      const { name, description, text, photoUrl } = props.item;
+      const { ingredients } = props.item;
+      let formData = {
+        name,
+        description,
+        text,
+        photoUrl,
+        ingredients: [],
+      };
+      ingredients &&
+        ingredients.forEach((i) => {
+          const ingredient = props.ingredientData.find((ing) => i.id == ing.id);
+
+          if (ingredient) {
+            console.log(ingredient);
+
+            const newItem = {
+              key: window.crypto.randomUUID(),
+              ingredient: optionMapper(ingredient),
+              amount: i.amount,
+              unit: i.unit,
+            };
+            formData.ingredients.push(newItem);
+          } else {
+            console.error("Invalid ingredient", ingredient);
+          }
+        });
+
+      state.formData = { ...state.formData, ...formData };
+    }
+
+    this.state = state;
   }
 
   handleSubmit = (event) => {
@@ -106,7 +143,6 @@ class RecipeForm extends Component {
   };
 
   deleteRow = (key) => {
-    console.log("deleteRow", key, this.state);
     let result = [];
 
     this.state.formData.ingredients.forEach((i) => {
@@ -164,7 +200,7 @@ class RecipeForm extends Component {
   };
 
   isValidNewOption = (data) => {
-    return data && data.length > 2; // todo better filter
+    return data && data.length > 2; // todo better filter and duplicates
   };
 
   renderIngredientSelect = (data) => {
@@ -176,7 +212,6 @@ class RecipeForm extends Component {
           value={data.ingredient}
           isClearable
           placeholder={"Vyberte..."}
-          //isMulti
           options={this.generateOptions()}
           onCreateOption={(label) => this.handleCreateOption(label, data.key)}
           onChange={this.handleChangeOption}
@@ -193,19 +228,14 @@ class RecipeForm extends Component {
 
   handleCreateOption(data, id) {
     const callback = (data) => {
-      this.handleChangeOption(this.optionMapper(data), { name: id });
+      this.handleChangeOption(optionMapper(data), { name: id });
     };
 
     this.props.handleIngredientCreate(data, callback);
   }
 
-  optionMapper = (i) => ({
-    value: i.id,
-    label: i.name,
-  });
-
   generateOptions = () => {
-    return this.props.ingredientData.map(this.optionMapper);
+    return this.props.ingredientData.map(optionMapper);
   };
 
   renderIngredients = () => {
@@ -218,6 +248,7 @@ class RecipeForm extends Component {
       key: window.crypto.randomUUID(),
       ingredient: undefined,
       amount: "",
+      unit: "",
     };
     const ingredients = [...formData.ingredients, newItem];
     this.setState({ formData: { ...formData, ingredients: ingredients } });
@@ -263,7 +294,7 @@ class RecipeForm extends Component {
                 type="text"
                 value={formData.photoUrl}
                 placeholder="URL obrázku"
-                pattern="^(https:|http:)\S*$"
+                pattern={URL_PATTERN}
                 onChange={this.handleChange}
               />
               <Form.Control.Feedback type="invalid">Nevalidní url</Form.Control.Feedback>

@@ -69,6 +69,11 @@ class RecipeDetail extends Component {
     handleDelete(item);
   };
 
+  handleEdit = () => {
+    const { item, handleEdit } = this.props;
+    handleEdit(item);
+  };
+
   render() {
     const { identity } = this.context;
     const { item, handleClose } = this.props;
@@ -94,7 +99,7 @@ class RecipeDetail extends Component {
 
         <Modal.Footer>
           {isEditable && (
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant="secondary" onClick={this.handleEdit}>
               Edit
             </Button>
           )}

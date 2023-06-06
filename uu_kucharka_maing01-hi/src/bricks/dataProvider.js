@@ -45,6 +45,17 @@ class DataProvider extends Component {
       });
   };
 
+  updateRecipeCall = (dtoIn, callback, errorCallback) => {
+    Calls.updateRecipe(dtoIn)
+      .then((responseData) => {
+        callback && callback(responseData.data);
+      })
+      .catch((err) => {
+        console.log("RECIPE ERROR HAPPENED", err);
+        errorCallback && errorCallback(err);
+      });
+  };
+
   deleteRecipeCall = (dtoIn, callback, errorCallback) => {
     Calls.deleteRecipe(dtoIn)
       .then((responseData) => {
@@ -105,6 +116,7 @@ class DataProvider extends Component {
       calls: {
         listRecipes: this.listRecipesCall,
         createRecipe: this.createRecipeCall,
+        updateRecipe: this.updateRecipeCall,
         deleteRecipe: this.deleteRecipeCall,
         createIngredient: this.createIngredientCall,
         listIngredients: this.listIngedientCall,

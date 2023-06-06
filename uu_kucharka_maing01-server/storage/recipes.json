@@ -1,69 +1,63 @@
 [
   {
     "name": "Buřty s cibulí",
-    "description": "Úžasný hospodský recept na drobné občerstvení. Vezmeme buřty a dáme je na talíř. Pak nakrájíme cibuli na kolečka a posypeme buřty. Podáváme ideálně s vychlazeným pivem. ",
+    "description": "Úžasný hospodský recept na drobné občerstvení. ",
     "id": "495a2f53e28edd18",
     "photoUrl": "https://images.pexels.com/photos/533342/pexels-photo-533342.jpeg?auto=compress&cs=tinysrgb&w=600",
     "ingredients": [
       {
-        "id": "1000000",
-        "amount": 2
+        "amount": 4,
+        "unit": "ks",
+        "id": "a7b12a023e3e64dc"
       },
       {
-        "id": "1000001",
-        "amount": 3
-      },
-      {
-        "id": "1000002",
-        "amount": 0
+        "amount": 1,
+        "unit": "ks",
+        "id": "98b12a023e3e64dc"
       }
     ],
+    "created": "2023-06-06T18:39:00.321Z",
     "createdBy": "15-8545-1",
-    "starred": []
+    "starred": [],
+    "text": "Vezmeme buřty a dáme je na talíř.\nPak nakrájíme cibuli na kolečka a posypeme buřty.\n\nPodáváme ideálně s vychlazeným pivem. "
   },
   {
     "name": "Buřty bez cibule",
-    "description": "Poněkud chudší recept. Vezmeme buřty a dáme je na talíř. Tečka.",
+    "description": "Poněkud chudší recept. ",
     "id": "495a2f53e28eabcd",
     "photoUrl": "https://images.pexels.com/photos/929137/pexels-photo-929137.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "created": "2023-06-05T18:39:00.321Z",
     "createdBy": "15-8545-1",
-    "starred": ["15-8545-1"]
+    "starred": ["15-8545-1"],
+    "text": "Vezmeme buřty a dáme je na talíř.\nHotovo.",
+    "ingredients": [
+      {
+        "amount": 4,
+        "unit": "ks",
+        "id": "a7b12a023e3e64dc"
+      }
+    ]
   },
   {
     "name": "Lívance",
-    "description": "Kouzelně jednoduchý recept. Accio lívance!!!",
+    "description": "Kouzelně jednoduchý recept.",
     "photoUrl": "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=300&dpr=1",
-    "id": "1",
-    "createdBy": "4-7644-1"
-  },
-  {
-    "name": "fake2",
-    "id": "2",
-    "createdBy": "15-8545-1"
-  },
-  {
-    "name": "fake3",
-    "id": "3",
-    "createdBy": "15-8545-1"
-  },
-  {
-    "name": "fake4",
-    "id": "4",
-    "createdBy": "15-8545-1",
-    "description": "Nějaký delší fake text, prostě kecy a kecy atd atd a pak ještě další kecy nebo jiný blbosti..."
-  },
-  {
-    "name": "fake5",
-    "id": "5",
-    "createdBy": "15-8545-1"
-  },
-  {
-    "name": "aaaaa",
-    "description": "bib",
-    "photoUrl": "https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=300&dpr=1",
+    "id": "495a2f53fg8edd18",
+    "createdBy": "4-7644-1",
+    "created": "2023-06-04T18:39:00.321Z",
     "starred": [],
-    "created": "2023-05-20T11:34:09.637Z",
-    "createdBy": "15-8545-1",
-    "id": "3c0b3e6d32942eb5"
+    "text": "Vezmeme všechny suroviny a dáme je na hromadu.\n\nPak zavoláme Accio lívance! a otevřeným oknem přivoláme čerstvé lívance od sousedky.",
+    "ingredients": [
+      {
+        "amount": 250,
+        "unit": "g",
+        "id": "3eae64779022f58c"
+      },
+      {
+        "amount": 4,
+        "unit": "ks",
+        "id": "01305a4d2cfcf7d5"
+      }
+    ]
   }
 ]

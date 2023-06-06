@@ -8,6 +8,7 @@ import RecipeFilter from "./recipeFilter.js";
 import RecipeTable from "./recipeTable.js";
 import RecipeDetail from "./recipeDetail.js";
 import RecipeCreate from "./recipeCreate.js";
+import RecipeEdit from "./recipeEdit.js";
 import RecipeDelete from "./recipeDelete.js";
 import Pagination from "./pagination.js";
 
@@ -97,6 +98,31 @@ class Recipes extends Component {
     this.props.calls.createRecipe(dtoIn, callback, errorCallback);
   };
 
+  handleSubmitUpdate = (data) => {
+    const { identity } = this.context;
+    let dtoIn = {
+      userId: identity.uuIdentity,
+      data: data,
+    };
+
+    const callback = (data) => {
+      this.setState({ editModal: false });
+      this.props.calls.addAlert({
+        message: 'Recept "' + data.name + '" byl změněn.',
+        priority: "success",
+        durationMs: ALERT_SUCCESS_DURATION,
+      });
+
+      this.onRefresh();
+    };
+
+    const errorCallback = (data) => {
+      this.props.calls.addAlert({ header: "Chyba", message: "Úprava receptu selhala.", priority: "error" });
+    };
+
+    this.props.calls.updateRecipe(dtoIn, callback, errorCallback);
+  };
+
   handleIngredientCreate = (data, formCallback) => {
     console.log("handleIngredientCreate CALLED", data);
 
@@ -138,6 +164,12 @@ class Recipes extends Component {
     // todo save detail data pro návrat?
   };
 
+  handleShowEdit = (data) => {
+    this.setState({ editModal: data, detailModal: false });
+  };
+
+  handleCloseEdit = () => this.setState({ editModal: false });
+
   handleCloseDelete = () => this.setState({ deleteModal: false });
 
   handleSubmitDelete = (data) => {
@@ -176,6 +208,7 @@ class Recipes extends Component {
           ingredientData={ingredientData}
           handleClose={this.handleCloseDetail}
           handleDelete={this.handleShowDelete}
+          handleEdit={this.handleShowEdit}
         />
       );
     }
@@ -189,6 +222,21 @@ class Recipes extends Component {
           ingredientData={ingredientData}
           handleSubmit={this.handleSubmitCreate}
           handleClose={this.handleCloseCreate}
+          handleIngredientCreate={this.handleIngredientCreate}
+        />
+      );
+    }
+  };
+
+  renderEdit = () => {
+    const { ingredientData } = this.props;
+    if (this.state.editModal) {
+      return (
+        <RecipeEdit
+          item={this.state.editModal}
+          ingredientData={ingredientData}
+          handleSubmit={this.handleSubmitUpdate}
+          handleClose={this.handleCloseEdit}
           handleIngredientCreate={this.handleIngredientCreate}
         />
       );
@@ -209,8 +257,6 @@ class Recipes extends Component {
   };
 
   render() {
-    console.log("recipes props X", this.props);
-
     const { identity } = this.context;
     const { recipeData, ingredientData, recipePageData } = this.props;
 
@@ -234,6 +280,7 @@ class Recipes extends Component {
         <br />
         {this.renderDetail()}
         {this.renderCreate()}
+        {this.renderEdit()}
         {this.renderDelete()}
         <br />
       </div>
