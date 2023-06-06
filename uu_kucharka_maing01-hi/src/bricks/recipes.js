@@ -197,6 +197,22 @@ class Recipes extends Component {
     this.props.calls.deleteRecipe(dtoIn, callback, errorCallback);
   };
 
+  handleSetStar = (dtoIn) => {
+    const callback = (data) => {
+      //this.onRefresh(); refreshed in dataprovider
+    };
+
+    const errorCallback = (data) => {
+      this.props.calls.addAlert({
+        header: "Chyba",
+        message: "Nastavení oblíbeného receptu selhalo.",
+        priority: "error",
+      });
+    };
+
+    this.props.calls.setStar(dtoIn, callback, errorCallback);
+  };
+
   renderDetail = () => {
     const { ingredientData } = this.props;
     const { detailModal } = this.state;
@@ -274,7 +290,12 @@ class Recipes extends Component {
         </Button>
         <br />
         <RecipeFilter search={this.search} handleChange={this.handleChange} inputValues={filterData} />
-        <RecipeTable recipeData={recipeData} ingredientData={ingredientData} handleShowDetail={this.handleShowDetail} />
+        <RecipeTable
+          recipeData={recipeData}
+          ingredientData={ingredientData}
+          handleShowDetail={this.handleShowDetail}
+          handleSetStar={this.handleSetStar}
+        />
         <br />
         <Pagination data={recipePageData} onPageChange={this.onPageChange} />
         <br />

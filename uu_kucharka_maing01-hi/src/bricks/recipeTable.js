@@ -26,7 +26,12 @@ class RecipeTable extends Component {
           <Container>
             <Row xs={1} sm={2} md={3} lg={4}>
               {recipeData.map((item) => (
-                <RecipeTile key={item.id} item={item} showDetail={this.props.handleShowDetail} />
+                <RecipeTile
+                  key={item.id}
+                  item={item}
+                  showDetail={this.props.handleShowDetail}
+                  handleSetStar={this.props.handleSetStar}
+                />
               ))}
             </Row>
           </Container>

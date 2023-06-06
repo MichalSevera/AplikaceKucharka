@@ -59,8 +59,6 @@ async function UpdateAbl(req, res) {
     const isCreator = userUtils.hasAuthority(userId, userUtils.CREATOR);
     const isAuthor = recipe.createdBy === userId;
 
-    console.log(data, recipe, userId);
-
     if (!isAdmin && !(isCreator && isAuthor)) {
       res
         .status(400)

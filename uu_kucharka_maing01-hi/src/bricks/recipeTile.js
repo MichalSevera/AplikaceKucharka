@@ -1,13 +1,9 @@
 import { Component } from "react";
 import Button from "react-bootstrap/Button";
-
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 
-//import Icon from '@mdi/react';
-//import { mdiArrowExpand } from '@mdi/js';
-
-//import './recipeTable.css';
+import IdentityContext from "../core/identity-context.js";
 
 const DEFAULT_IMAGE =
   "https://images.pexels.com/photos/291767/pexels-photo-291767.jpeg?auto=compress&cs=tinysrgb&w=300";
@@ -18,23 +14,30 @@ class RecipeTile extends Component {
     this.state = {};
   }
 
-  //<Icon path={mdiArrowExpand} size={1} color="white"/>
+  handleSetStar = (isFavorite) => {
+    const { item, handleSetStar } = this.props;
+    handleSetStar({ id: item.id, starred: !isFavorite, userId: this.context.identity.uuIdentity });
+  };
 
   render() {
-    let { item, showDetail } = this.props;
+    const { item, showDetail } = this.props;
+    const isFavorite = item.starred && item.starred.includes(this.context.identity.uuIdentity);
 
     return (
       <Col key={item.id} className="p-3">
-        <Card border={"primary"}>
+        <Card border={"dark"}>
           <Card.Img variant="top" src={item.photoUrl ? item.photoUrl : DEFAULT_IMAGE} />
           <Card.Body>
             <Card.Title>{item.name}</Card.Title>
             <Card.Text>{item.description}</Card.Text>
           </Card.Body>
 
-          <Card.Body>
-            <Button variant="primary" onClick={() => showDetail(item)}>
+          <Card.Body className={"d-flex justify-content-between"}>
+            <Button variant="outline-primary" onClick={() => showDetail(item)}>
               Detail
+            </Button>
+            <Button variant={isFavorite ? "warning" : "outline-warning"} onClick={() => this.handleSetStar(isFavorite)}>
+              🟊
             </Button>
           </Card.Body>
         </Card>
@@ -42,5 +45,6 @@ class RecipeTile extends Component {
     );
   }
 }
+RecipeTile.contextType = IdentityContext;
 
 export default RecipeTile;

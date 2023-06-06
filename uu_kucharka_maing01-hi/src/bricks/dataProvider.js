@@ -23,15 +23,9 @@ class DataProvider extends Component {
   listRecipesCall = (dtoIn) => {
     Calls.listRecipes(dtoIn)
       .then((responseData) => {
-        //console.log("data:", responseData.data.pagination);
-
-        this.setState({ recipeData: responseData.data.data, recipePageData: responseData.data.pagination }); // different incomming structure
-
-        // todo set pagination to state!!!
+        this.setState({ recipeData: responseData.data.data, recipePageData: responseData.data.pagination });
       })
       .catch((err) => console.log("RECIPE ERROR HAPPENED", err));
-    // todo set states // OK, PENDING, ERROR
-    // todo handle errors
   };
 
   createRecipeCall = (dtoIn, callback, errorCallback) => {
@@ -67,6 +61,27 @@ class DataProvider extends Component {
       });
   };
 
+  setStarCall = (dtoIn, callback, errorCallback) => {
+    Calls.setStar(dtoIn)
+      .then((responseData) => {
+        const arr = [];
+        this.state.recipeData.forEach((recipe) => {
+          if (recipe.id === responseData.data.id) {
+            arr.push(responseData.data);
+          } else {
+            arr.push(recipe);
+          }
+        });
+        this.setState({ recipeData: arr });
+
+        callback && callback(responseData.data);
+      })
+      .catch((err) => {
+        console.log("RECIPE ERROR HAPPENED", err);
+        errorCallback && errorCallback(err);
+      });
+  };
+
   _sortIngredients = (data) => {
     data.sort((a, b) => {
       return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
@@ -78,7 +93,6 @@ class DataProvider extends Component {
     Calls.createIngredient(dtoIn)
       .then((responseData) => {
         this.setState({ ingredientData: this._sortIngredients([...this.state.ingredientData, responseData.data]) });
-
         callback && callback(responseData.data);
       })
       .catch((err) => {
@@ -93,14 +107,7 @@ class DataProvider extends Component {
         this.setState({ ingredientData: this._sortIngredients(responseData.data) });
       })
       .catch((err) => console.log("INGREDIENT ERROR HAPPENED", err));
-    // todo set states // OK, PENDING, ERROR
-    // todo handle errors
   };
-
-  // data provider bude poskytovat data pro recepty i ingredience, takže by měl data posílat v rozumné struktuře - TODO!
-  // je potřeba dodržovat to, že změna v datech změní odkaz v paměti, jinak nedojde k re-renderu!
-
-  // plus všechny obslužné metody samozřejmě odkaz nemění!
 
   addAlert = (data) => {
     this.props.addAlert(data);
@@ -118,6 +125,7 @@ class DataProvider extends Component {
         createRecipe: this.createRecipeCall,
         updateRecipe: this.updateRecipeCall,
         deleteRecipe: this.deleteRecipeCall,
+        setStar: this.setStarCall,
         createIngredient: this.createIngredientCall,
         listIngredients: this.listIngedientCall,
         addAlert: this.addAlert,
