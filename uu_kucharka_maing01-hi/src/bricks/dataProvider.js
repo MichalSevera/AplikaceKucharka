@@ -42,6 +42,16 @@ class DataProvider extends Component {
   updateRecipeCall = (dtoIn, callback, errorCallback) => {
     Calls.updateRecipe(dtoIn)
       .then((responseData) => {
+        const arr = [];
+        this.state.recipeData.forEach((recipe) => {
+          if (recipe.id === responseData.data.id) {
+            arr.push(responseData.data);
+          } else {
+            arr.push(recipe);
+          }
+        });
+        this.setState({ recipeData: arr });
+
         callback && callback(responseData.data);
       })
       .catch((err) => {

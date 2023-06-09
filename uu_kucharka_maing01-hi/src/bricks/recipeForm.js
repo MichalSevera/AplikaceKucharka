@@ -48,8 +48,6 @@ class RecipeForm extends Component {
           const ingredient = props.ingredientData.find((ing) => i.id == ing.id);
 
           if (ingredient) {
-            console.log(ingredient);
-
             const newItem = {
               key: window.crypto.randomUUID(),
               ingredient: optionMapper(ingredient),
@@ -75,8 +73,6 @@ class RecipeForm extends Component {
 
     this.setState({ validated: true });
 
-    // todo validity for ingredient selects, not empty !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
     if (form.checkValidity() === true) {
       const data = { ...this.state.formData };
       data.ingredients = data.ingredients.map((i) => ({ amount: i.amount, unit: i.unit, id: i.ingredient.value }));
@@ -86,8 +82,6 @@ class RecipeForm extends Component {
   };
 
   handleChange = (event) => {
-    console.log("handleChange ", event.target.id, event.target.value);
-
     let newData = { ...this.state.formData };
     newData[event.target.id] = event.target.value;
 
@@ -95,8 +89,6 @@ class RecipeForm extends Component {
   };
 
   handleAmountChange = (event) => {
-    console.log("handleAmountChange ", event.target.id, event.target.value);
-
     const result = [];
     const id = event.target.id.substring(AMOUNT_PREFIX.length);
 
@@ -112,8 +104,6 @@ class RecipeForm extends Component {
   };
 
   handleUnitChange = (event) => {
-    console.log("handleUnitChange ", event.target.id, event.target.value);
-
     const result = [];
     const id = event.target.id.substring(UNIT_PREFIX.length);
 
@@ -200,7 +190,7 @@ class RecipeForm extends Component {
   };
 
   isValidNewOption = (data) => {
-    return data && data.length > 2; // todo better filter and duplicates
+    return data && data.length > 2;
   };
 
   renderIngredientSelect = (data) => {
@@ -310,7 +300,9 @@ class RecipeForm extends Component {
           <Modal.Body>
             <div>Ingredience</div>
             {this.renderIngredients()}
-            <Button onClick={this.handleAdd}>+ přidat</Button>
+            <Button variant="outline-primary" onClick={this.handleAdd}>
+              + přidat
+            </Button>
           </Modal.Body>
 
           <Modal.Footer>

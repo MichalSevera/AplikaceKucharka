@@ -21,7 +21,7 @@ class Recipes extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterData: { text: "", starred: false },
+      filterData: { text: "", ingredient: null, starred: false },
       detailModal: false,
       createModal: false,
       deleteModal: false,
@@ -29,19 +29,8 @@ class Recipes extends Component {
   }
 
   componentDidMount = function () {
-    console.log("componentDidMount");
     this.props.calls.listIngredients();
     this.search();
-  };
-
-  printRights = () => {
-    const { identity } = this.context;
-
-    if (identity.authorities.length == 0) {
-      return "Nemáš nastavena žádná práva. Smůla.";
-    } else {
-      return "Máš práva: " + identity.authorities.join(", ");
-    }
   };
 
   search = (page = 1) => {
@@ -49,6 +38,9 @@ class Recipes extends Component {
     const data = { "page-size": PAGE_SIZE, "page-number": page };
     if (filterData.text.length > 0) {
       data.text = filterData.text;
+    }
+    if (filterData.ingredient) {
+      data.ingredient = filterData.ingredient.value;
     }
     if (filterData.starred) {
       data.starred = this.context.identity.uuIdentity;
@@ -113,7 +105,7 @@ class Recipes extends Component {
         durationMs: ALERT_SUCCESS_DURATION,
       });
 
-      this.onRefresh();
+      //already refreshed in dataprovider
     };
 
     const errorCallback = (data) => {
@@ -155,13 +147,16 @@ class Recipes extends Component {
     this.setState({ filterData: newData });
   };
 
+  handleChangeOption = (value) => {
+    this.setState({ filterData: { ...this.state.filterData, ingredient: value } });
+  };
+
   handleShowDetail = (data) => this.setState({ detailModal: data });
 
   handleCloseDetail = () => this.setState({ detailModal: false });
 
   handleShowDelete = (data) => {
     this.setState({ deleteModal: data, detailModal: false });
-    // todo save detail data pro návrat?
   };
 
   handleShowEdit = (data) => {
@@ -199,7 +194,7 @@ class Recipes extends Component {
 
   handleSetStar = (dtoIn) => {
     const callback = (data) => {
-      //this.onRefresh(); refreshed in dataprovider
+      //already refreshed in dataprovider
     };
 
     const errorCallback = (data) => {
@@ -281,15 +276,18 @@ class Recipes extends Component {
     return (
       <div className="page">
         <div>
-          Jsi ověřený uživatel: {identity.name} ({identity.uuIdentity})
+          <Button variant="outline-primary" onClick={this.handleShowCreate}>
+            + vytvořit recept
+          </Button>
         </div>
-        <div>{this.printRights()}</div>
         <br />
-        <Button variant="secondary" onClick={this.handleShowCreate}>
-          + create
-        </Button>
-        <br />
-        <RecipeFilter search={this.search} handleChange={this.handleChange} inputValues={filterData} />
+        <RecipeFilter
+          search={this.search}
+          handleChange={this.handleChange}
+          handleChangeOption={this.handleChangeOption}
+          inputValues={filterData}
+          ingredientData={ingredientData}
+        />
         <RecipeTable
           recipeData={recipeData}
           ingredientData={ingredientData}

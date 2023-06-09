@@ -6,16 +6,17 @@ import Config from "./config/config.js";
 const transformIdentity = (identity) => {
   const auth = Environment.get("authorities") || [];
   const authorities = [];
-  auth.forEach(item => {
-    const {authority, identities} = item;
-    console.log("found authority: " + authority);
-    if (identity && identities.includes(identity.uuIdentity)){
+  auth.forEach((item) => {
+    const { authority, identities } = item;
+    if (identity && identities.includes(identity.uuIdentity)) {
       authorities.push(authority);
     }
   });
 
-  return {...identity, authorities};
-} 
+  console.log("Identity", identity, authorities);
+
+  return { ...identity, authorities };
+};
 
 const IdentityContext = React.createContext();
 
@@ -27,9 +28,11 @@ const IdProvider = createVisualComponent({
   render(props) {
     const { identity, state } = useSession();
 
-    return (<IdentityContext.Provider value={{identity: transformIdentity(identity), state}}>
+    return (
+      <IdentityContext.Provider value={{ identity: transformIdentity(identity), state }}>
         {props.children}
-      </IdentityContext.Provider>)
+      </IdentityContext.Provider>
+    );
   },
 });
 

@@ -12,17 +12,9 @@ import Home from "../routes/home.js";
 import { IdProvider } from "./identity-context.js";
 //@@viewOff:imports
 
-//@@viewOn:constants
-const About = Utils.Component.lazy(() => import("../routes/about.js"));
-const InitAppWorkspace = Utils.Component.lazy(() => import("../routes/init-app-workspace.js"));
-const ControlPanel = Utils.Component.lazy(() => import("../routes/control-panel.js"));
-
 const ROUTE_MAP = {
   "": { redirect: "home" },
   home: (props) => <Home {...props} />,
-  about: (props) => <About {...props} />,
-  "sys/uuAppWorkspace/initUve": (props) => <InitAppWorkspace {...props} />,
-  controlPanel: (props) => <ControlPanel {...props} />,
   "*": () => (
     <Uu5Elements.Text category="story" segment="heading" type="h1">
       Not Found

@@ -51,8 +51,6 @@ class RecipeDetail extends Component {
   renderIngredients() {
     const { item, ingredientData } = this.props;
     const { serving } = this.state;
-
-    // should use preprepared map...
     const ingredientMap = new Map(ingredientData.map((obj) => [obj.id, obj]));
 
     return (
@@ -92,6 +90,7 @@ class RecipeDetail extends Component {
         </Modal.Body>
         <hr />
         <Modal.Body className={"pre"}>{item.text}</Modal.Body>
+        <hr />
         {item.ingredients && item.ingredients.length > 0 ? <Modal.Body>{this.renderIngredients()}</Modal.Body> : ""}
         <Modal.Body>
           <Plus4U5Elements.PersonItem uuIdentity={item.createdBy} />

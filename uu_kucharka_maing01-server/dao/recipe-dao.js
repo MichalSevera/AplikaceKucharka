@@ -80,9 +80,6 @@ class RecipesDao {
   }
 
   _filterRecipes(recipesList, filter) {
-    // todo some more filtering :)
-    console.log("filter", filter);
-
     if (filter.text) {
       recipesList = recipesList.filter(
         (item) =>
@@ -90,6 +87,13 @@ class RecipesDao {
           (item.description &&
             item.description.toLowerCase().includes(filter.text)) ||
           (item.text && item.text.toLowerCase().includes(filter.text))
+      );
+    }
+    if (filter.ingredient) {
+      recipesList = recipesList.filter(
+        (item) =>
+          item.ingredients &&
+          item.ingredients.some((ing) => ing.id === filter.ingredient)
       );
     }
     if (filter.starred) {

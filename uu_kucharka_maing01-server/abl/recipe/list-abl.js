@@ -12,6 +12,9 @@ let schema = {
       type: "string",
       pattern: "^[0-9]{1,5}$",
     },
+    ingredient: {
+      type: "string",
+    },
     starred: {
       type: "string",
     },
@@ -26,8 +29,6 @@ function paginate(array, pageSize, pageNumber) {
 }
 
 async function ListAbl(req, res) {
-  //console.log("Query params", req.query);
-
   const ajv = new Ajv();
   const valid = ajv.validate(schema, req.query);
 
@@ -42,15 +43,18 @@ async function ListAbl(req, res) {
 
   let pageNumber = req.query["page-number"]
     ? parseInt(req.query["page-number"], 10)
-    : 1; // todo make named constants
+    : 1;
   let pageSize = req.query["page-size"]
     ? parseInt(req.query["page-size"], 10)
     : 24;
 
   let filter = {};
-  const { text, starred } = req.query;
+  const { text, ingredient, starred } = req.query;
   if (text) {
     filter.text = text.toLowerCase();
+  }
+  if (ingredient) {
+    filter.ingredient = ingredient;
   }
   if (starred) {
     filter.starred = starred;

@@ -16,13 +16,10 @@ class RecipeTable extends Component {
     const { recipeData } = this.props;
 
     if (recipeData.length == 0) {
-      return "No data 🙁";
+      return "Nic k nalezení 🙁";
     } else {
       return (
         <div>
-          <div>počet receptů: {recipeData.length}</div>
-          <br />
-          <br />
           <Container>
             <Row xs={1} sm={2} md={3} lg={4}>
               {recipeData.map((item) => (
@@ -41,12 +38,8 @@ class RecipeTable extends Component {
   };
 
   render() {
-    console.log("rendering RecipeTable props", this.props);
-
     return (
       <div className="recipeTable">
-        <div>já jsem komponenta RecipeTable</div>
-        <br />
         <div>{this.renderData()}</div>
       </div>
     );
