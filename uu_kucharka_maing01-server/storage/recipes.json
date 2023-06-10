@@ -28,9 +28,7 @@
     "photoUrl": "https://images.pexels.com/photos/929137/pexels-photo-929137.jpeg?auto=compress&cs=tinysrgb&w=600",
     "created": "2023-06-05T18:39:00.321Z",
     "createdBy": "15-8545-1",
-    "starred": [
-      "15-8545-1"
-    ],
+    "starred": ["15-8545-1"],
     "text": "Vezmeme buřty a dáme je na talíř.\nHotovo.",
     "ingredients": [
       {
@@ -61,6 +59,678 @@
         "id": "01305a4d2cfcf7d5"
       }
     ]
+  },
+  {
+    "name": "Tuňákové špagety",
+    "description": " Velmi snadná a chutná variace těstovin s rybou",
+    "text": "1.Těstoviny uvaříme v osolené vodě podle pokynů na obalu, do změknutí. Poté je scedíme a dáme stranou. Stranou dáme i zhruba ¼ hrníčku vody z uvařených špaget.\n2.Na pánvi rozehřejeme trochu vody a přidáme cibuli nakrájenou na půlkolečka. Smažíme ji na středním plamenu, do změknutí.\n3.Otevřeme plechovku tuňáka ve vlastní šťávě a přidáme ji na pánev ke změklé cibuli. Poté přidáme protlak a promícháme, dokud se všechny ingredience nespojí. Přidáme vodu ze špaget a necháme na malém plamenu vařit cca 5-10 minut.\n4.Dochutíme bylinkami a dokořeníme solí a pepřem dle chuti.\n5.Přidáme uvařené těstoviny do pánve a promícháme, aby se omáčka dostala všude.",
+    "photoUrl": "https://static.toprecepty.cz/fotky/recepty/0662/tunakove-spagety-246337-1920-1080-nwo.webp",
+    "ingredients": [
+      {
+        "amount": 200,
+        "unit": "gr",
+        "id": "f4081447f582fa40"
+      },
+      {
+        "amount": 1,
+        "unit": "kus",
+        "id": "98b12a023e3e64dc"
+      },
+      {
+        "amount": 1,
+        "unit": "plechovka",
+        "id": "fd67ce5a65f09ef8"
+      },
+      {
+        "amount": 70,
+        "unit": "gr",
+        "id": "75285b57139e7eed"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíčka",
+        "id": "0a444cf7883f1476"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "98b125623e3e64dc"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "77bca5d2bc46eb03"
+      }
+    ],
+    "starred": [],
+    "created": "2023-06-10T08:30:11.709Z",
+    "createdBy": "7657-6217-1",
+    "id": "fbdde5c9eef2a8db"
+  },
+  {
+    "name": "Zapečený filet tresky se žampiony",
+    "description": "Pečené filety tresky se žampiony, šunkou a sýrem.",
+    "text": "1.Osušený filet rozkrojíme na 4 díly, budou tedy 2 na porci. Každý osolíme, opepříme, okmínujeme a opečeme na pánvi s rozehřátým máslem s olejem.\n2.Opečené porce pokládáme do pekáčku vyloženého pečicím papírem. Troubu zapneme na 200 °C.\n3.Žampiony očistíme a nakrájíme na plátky. Na tresku položíme půl plátku šunky, plátek sýra a 5 plátků žampionů. Opepříme, zakápneme citronovou šťávou, máslem z pánve a dáme na 10 minut do vyhřáté trouby.\n4.Zapečené porce pak mírně pokapeme kečupem, nejlépe domácím, každý si dá dle chuti. Podáváme s různě upraveným bramborem nebo na topinkách či opečených toastech a přidáme salát dle vlastní chuti.",
+    "photoUrl": "https://static.toprecepty.cz/fotky/recepty/0665/zapeceny-filet-tresky-se-zampiony-246651-1920-1080-nwo.webp",
+    "ingredients": [
+      {
+        "amount": 300,
+        "unit": "gr",
+        "id": "ea7c30dbcf78ec15"
+      },
+      {
+        "amount": 2,
+        "unit": "lžíce",
+        "id": "be8ab25ef0182f3e"
+      },
+      {
+        "amount": 2,
+        "unit": "plátek",
+        "id": "526d7d5585d9f48f"
+      },
+      {
+        "amount": 4,
+        "unit": "kus",
+        "id": "4e978b625aeb2850"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "77bca5d2bc46eb03"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "98b125623e3e64dc"
+      },
+      {
+        "amount": 1,
+        "unit": "špetka",
+        "id": "cb3c9a4384a90221"
+      },
+      {
+        "amount": 1,
+        "unit": "kus",
+        "id": "f3e6edea64ce0d01"
+      }
+    ],
+    "starred": [],
+    "created": "2023-06-10T08:37:31.911Z",
+    "createdBy": "7657-6217-1",
+    "id": "9f3ac8ead18b70a8"
+  },
+  {
+    "name": "Masové jehněčí kuličky v pikantní omáčce",
+    "description": "Masové kuličky v rajčatové",
+    "text": "1.Očištěné jehněčí maso nameleme do misky. Přidáme sůl, kmín, 2 vejce, drcený bílý pepř, škrob a oprané, osušené a jemně nasekané lístky máty. Dobře promícháme a vlhkou rukou vytvoříme malé kuličky o průměru asi 4 cm. Z namíchaného masa vytvoříme velkou šišku, rozdělíme ji na 4 díly a z každého dílu pak vytvoříme 3 kuličky.\n2.Kuličky opečeme zvolna ze všech stran na rozehřáté pánvi na 2 lžících oleje dozlatova a vyndáme stranou.\n3.Na pánev dáme novou1 lžíci oleje, vložíme nasekaný česnek a necháme rozvonět. Přidáme očištěnou, drobně nakrájenou papriku, nasekaná rajčata a chvilku restujeme. Poté přidáme rajčatovou pastu i harissu, okořeníme, promícháme a podlijeme cca 150-200 ml vody a 7 minut povaříme.\n4.Do omáčky dáme prohřát masové kuličky zakryté poklicí na cca 3-5 minut na sníženém stupni tepla.\n5.Další 2 vejce uděláme pošírovaná. Do misky vroucí vody se lžičkou octa rozklepneme vejce, zakryjeme talířkem a dáme do MVT na 40-45 sekund, na výkon 800 W. Orientujeme se podle velikosti vejce. Hotové vejce přidáme do misek nebo talířů až při servírování.\n6.Kuličky s omáčkou podáváme s chlebem, opečeným toastem nebo bagetou, ale výborné jsou i s rýží. Pohodíme nasekanou cibulovou natí a ozdobíme lístky máty. Rajčata, paprika a vejce připomíná naše lečo ale koření a máta dodá jiný šmrnc.",
+    "photoUrl": "https://static.toprecepty.cz/fotky/recepty/0667/masove-jehneci-kulicky-v-pikantni-omacce-246827-1920-1080-nwo.webp",
+    "ingredients": [
+      {
+        "amount": 400,
+        "unit": "gr",
+        "id": "964d1692cde6f674"
+      },
+      {
+        "amount": 3,
+        "unit": "snítka",
+        "id": "57f7f1ad47b5c269"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíčka",
+        "id": "cb3c9a4384a90221"
+      },
+      {
+        "amount": 2,
+        "unit": "kus",
+        "id": "01305a4d2cfcf7d5"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "77bca5d2bc46eb03"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "98b125623e3e64dc"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíčka",
+        "id": "472c73738dc9b693"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "ee9bc1a2bf3f5ecc"
+      },
+      {
+        "amount": 1,
+        "unit": "kus",
+        "id": "dd17fbc3cd4cb33b"
+      },
+      {
+        "amount": 2,
+        "unit": "kus",
+        "id": "f3519ed4d266a3b4"
+      },
+      {
+        "amount": 2,
+        "unit": "stroužek",
+        "id": "0b34742281d9ff9c"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíčka",
+        "id": "53d4c8b3dbe827de"
+      },
+      {
+        "amount": 3,
+        "unit": "lžíce",
+        "id": "d3b829ad0de2a2f4"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíce",
+        "id": "bad458e79ddb83a6"
+      },
+      {
+        "amount": 150,
+        "unit": "ml",
+        "id": "111cf82601aa4b5b"
+      }
+    ],
+    "starred": [],
+    "created": "2023-06-10T08:49:07.763Z",
+    "createdBy": "7657-6217-1",
+    "id": "c725a74676f75a69"
+  },
+  {
+    "name": "Vejce zapečená v šunce",
+    "description": "Vejce pečená v plátcích šunky ochucená mozzarellou a goudou",
+    "text": "1.Formy na muffiny vymažeme máslem a do každé dáme 2 kolečka šunky, kuličku mozzarelly, vklepneme vejce, osolíme, opepříme a posypeme goudou.\n2.Vložíme do vyhřáté trouby na 180 °C a pečeme 10 minut.\n3.Zelený chřest oloupeme, odlomíme spodní část a vložíme do vroucí osolené vody.\n4.Vaříme 2-3 minuty. Na talíři chřest pokapeme máslem.",
+    "photoUrl": "https://static.toprecepty.cz/fotky/recepty/0665/vejce-zapecena-v-sunce-246607-1920-1080-nwo.webp",
+    "ingredients": [
+      {
+        "amount": 6,
+        "unit": "kus",
+        "id": "01305a4d2cfcf7d5"
+      },
+      {
+        "amount": 12,
+        "unit": "kolečko",
+        "id": "04abc3946f61debf"
+      },
+      {
+        "amount": 6,
+        "unit": "kulička",
+        "id": "e9cc9f92c094ba89"
+      },
+      {
+        "amount": 100,
+        "unit": "gr",
+        "id": "466f07e6571bf74f"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "77bca5d2bc46eb03"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "98b125623e3e64dc"
+      },
+      {
+        "amount": 1,
+        "unit": "balíček",
+        "id": "52209b81de2b37a2"
+      },
+      {
+        "amount": 1,
+        "unit": "kousek",
+        "id": "be8ab25ef0182f3e"
+      }
+    ],
+    "starred": [],
+    "created": "2023-06-10T09:16:40.506Z",
+    "createdBy": "7657-6217-1",
+    "id": "6845ea44fc48f71c"
+  },
+  {
+    "name": "Květáková polévka s česnekem a bylinkami",
+    "description": "lehce pikantní květáková polévka s bramborami a bylinkami",
+    "text": "1.Květák rozebereme na růžičky (jednu syrovou růžičku květáku ponecháme na dokončení, můžeme plátky lehce osmažit na oleji), propláchneme a uvaříme v osolené vodě na skus.\n2.V rozehřátém hrnci, hluboké nebo wok pánvi, na1 lžíci oleje, lehce osmahneme cibuli nasekanou nadrobno.\n3.Přidáme česnek, sušené bylinky a necháme rozvonět, zalijeme vývarem, vložíme květák, na kostičky nakrájenou bramboru a vaříme do úplného změknutí.\n4.Rozmixujeme, jen pár kostiček brambor necháme k dokončení, dle chuti dosolíme a opepříme. Na talíři můžeme maličko zakápnout olivovým olejem, posypeme nasekanými čerstvými bylinkami a přidáme květák a kostičky brambory na ozdobu.",
+    "photoUrl": "https://static.toprecepty.cz/fotky/recepty/0667/kvetakova-polevka-s-cesnekem-a-bylinkami-246867-1920-1080-nwo.webp",
+    "ingredients": [
+      {
+        "amount": 1,
+        "unit": "kus",
+        "id": "94b44377e57affba"
+      },
+      {
+        "amount": 2,
+        "unit": "lžíce",
+        "id": "5632690daf3756b2"
+      },
+      {
+        "amount": 3,
+        "unit": "stroužek",
+        "id": "0b34742281d9ff9c"
+      },
+      {
+        "amount": 1,
+        "unit": "kus",
+        "id": "98b12a023e3e64dc"
+      },
+      {
+        "amount": 1,
+        "unit": "kus",
+        "id": "f1c089d2330f3177"
+      },
+      {
+        "amount": 700,
+        "unit": "ml",
+        "id": "e6b4560f6feb1b7f"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíce",
+        "id": "bd8c144f85b812d2"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíce",
+        "id": "487ba99f166dd60a"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíce",
+        "id": "11f35a898fe8ca9d"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "77bca5d2bc46eb03"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "98b125623e3e64dc"
+      }
+    ],
+    "starred": [],
+    "created": "2023-06-10T09:23:28.379Z",
+    "createdBy": "7657-6217-1",
+    "id": "e6bdcd7379ae21bd"
+  },
+  {
+    "name": "Kurkumáček za hubičku",
+    "description": "kuličky ze směsi vepřového masa, kysaného zelí, sýra",
+    "text": "1.Promícháme veškeré suroviny, kromě strouhanky.\n2.Lžící odebereme řádně promíchanou směs na zhruba 30 gramovou kuličku, kterou vyválíme ve strouhance.\n3.Smažíme v pánvi na rozpáleném oleji dozlatova.",
+    "photoUrl": "https://static.toprecepty.cz/fotky/recepty/0667/kurkumacek-za-hubicku-246883-1920-1080-nwo.webp",
+    "ingredients": [
+      {
+        "amount": 500,
+        "unit": "gr",
+        "id": "7f0a388362be09b2"
+      },
+      {
+        "amount": 100,
+        "unit": "gr",
+        "id": "2c7702fe8fe9ac17"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíce",
+        "id": "1d659ae395d5b569"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíce",
+        "id": "b43fb4792e3a1735"
+      },
+      {
+        "amount": 50,
+        "unit": "gr",
+        "id": "6223e45b40df3549"
+      },
+      {
+        "amount": 1,
+        "unit": "kus",
+        "id": "01305a4d2cfcf7d5"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíčka",
+        "id": "b00d0fca2d3d51d7"
+      },
+      {
+        "amount": 1,
+        "unit": "špítka",
+        "id": "2d1dbbf1eded8b15"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "77bca5d2bc46eb03"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "49b4fbfa7a9c088b"
+      }
+    ],
+    "starred": [],
+    "created": "2023-06-10T09:31:21.923Z",
+    "createdBy": "7657-6217-1",
+    "id": "c8037ecdd7b1e736"
+  },
+  {
+    "name": "Květák s cizrnou",
+    "description": "Květák s cizrnou, fazolkami, hráškem a kokosovým mlékem",
+    "text": "1.Květák rozebereme na malé růžičky, propláchneme na sítu a necháme okapat. Cibuli rozpůlíme, sloupneme a nasekáme najemno. Rajče spaříme a oloupeme.\n2.Do hluboké rozehřáté pánve dáme olej a zesklovatíme na něm cibuli.\n3.Přidáme máslo, květák a restujeme cca 5-7 minut. Přidáme česnek, zázvor, sůl, všechno koření a necháme rozvonět. Přidáme nakrájené rajče, promícháme a podlijeme vývarem. Za občasného míchání povaříme ještě 2 minuty.\n4.Mražený hrášek i fazolky na sítu propláchneme, dáme do pánve a přidáme i scezenou cizrnu.\nZalijeme kokosovým mlékem, přidáme na kolečka nakrájenou chilli papričku, přivedeme k varu, necháme mírně zhoustnout a odstavíme.\n5.Podáváme s rýží basmati, zakápneme citronovou šťávou a poházíme lístky koriandru. Podle chuti si každý může v misce pokapat jogurtem.",
+    "photoUrl": "https://static.toprecepty.cz/fotky/recepty/0665/kvetak-s-cizrnou-fazolkami-hraskem-a-kokosovym-mlekem-246584-1920-1080-nwo.webp",
+    "ingredients": [
+      {
+        "amount": 200,
+        "unit": "gr",
+        "id": "94b44377e57affba"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíce",
+        "id": "ee9bc1a2bf3f5ecc"
+      },
+      {
+        "amount": 1,
+        "unit": "kus",
+        "id": "98b12a023e3e64dc"
+      },
+      {
+        "amount": 2,
+        "unit": "lžíce",
+        "id": "b1bc6d5ce9c7ddf6"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíce",
+        "id": "5ff5dac20d416073"
+      },
+      {
+        "amount": 1,
+        "unit": "stroužek",
+        "id": "0b34742281d9ff9c"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíce",
+        "id": "1d659ae395d5b569"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíčka",
+        "id": "9a8c60bb5e6570a3"
+      },
+      {
+        "amount": 1,
+        "unit": "špetka",
+        "id": "1c77add6538db322"
+      },
+      {
+        "amount": 1,
+        "unit": "kus",
+        "id": "f3519ed4d266a3b4"
+      },
+      {
+        "amount": 150,
+        "unit": "ml",
+        "id": "c6bcbba478f421d6"
+      },
+      {
+        "amount": 100,
+        "unit": "ml",
+        "id": "e6b4560f6feb1b7f"
+      },
+      {
+        "amount": 200,
+        "unit": "gr",
+        "id": "2ed5cc5a610de26f"
+      },
+      {
+        "amount": 50,
+        "unit": "gr",
+        "id": "1cee7952da67b601"
+      },
+      {
+        "amount": 50,
+        "unit": "gr",
+        "id": "968f956c336a99bf"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "c5e6ef8d403b4263"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "16021bb720292705"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "dd38857f26f095fc"
+      }
+    ],
+    "starred": [],
+    "created": "2023-06-10T09:43:13.692Z",
+    "createdBy": "7657-6217-1",
+    "id": "e33b7d36cda59b8d"
+  },
+  {
+    "name": "Vepřová játra na minutku z horkovzdušné fritézy",
+    "description": "budete mít na stole nejen výbornou, ale i levnou večeři",
+    "text": "1.V hlubokém talíři nebo misce smícháme olej s kořením.\n2.Játra opláchneme, osušíme, nakrájíme na 1,5 cm silné plátky a na okrajích malinko nařízneme. Dáme je do oleje s kořením, pořádně je v tom promícháme a necháme 10 minut odpočinout.\n3.Na dno HF dáme vodu a worcester. Játra narovnáme do fritovacího koše a zasuneme do přístroje.\n4.Teplotu nastavíme na 165°C a časovač na 8 minut. Po zaznění signálu koš z fritézy vytáhneme, játra otočíme, přidáme máslo a koš zasuneme do přístroje.\n5.Teplotu nastavíme na 170°C a časovač na 6 minut. Poté řezem na jednom plátku vyzkoušíme jestli nám vyhovuje propečení a můžeme podávat.\n6.Plátky jater na talíři přelijeme šťávou ze dna HF.",
+    "photoUrl": "https://static.toprecepty.cz/fotky/recepty/0664/veprova-jatra-na-minutku-z-horkovzdusne-fritezy-246548-1920-1080-nwo.webp",
+    "ingredients": [
+      {
+        "amount": 400,
+        "unit": "gr",
+        "id": "fab4c14beadda3e9"
+      },
+      {
+        "amount": 2,
+        "unit": "lžíce",
+        "id": "ee9bc1a2bf3f5ecc"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíce",
+        "id": "e0aac0539d6a1f32"
+      },
+      {
+        "amount": 1,
+        "unit": "plátek",
+        "id": "be8ab25ef0182f3e"
+      },
+      {
+        "amount": 4,
+        "unit": "lžíce",
+        "id": "111cf82601aa4b5b"
+      },
+      {
+        "amount": 2,
+        "unit": "lžíce",
+        "id": "62db989d2a184831"
+      }
+    ],
+    "starred": [],
+    "created": "2023-06-10T09:47:22.985Z",
+    "createdBy": "7657-6217-1",
+    "id": "6f0e057affc35126"
+  },
+  {
+    "name": "Karbanátky z brambor a balkánského sýra",
+    "description": "Karbanátky z brambor a balkánského sýra",
+    "text": "1.Oloupané syrové brambory nastrouháme na nudličky. Nastrouhané brambory přendáme do velkého síta a tlakem ruky přes síto z brambor vymačkáme všechnu vodu nejlépe do hlubokého talíře. Vymačkané brambory dáme do mísy. Usazený škrob na dně talíře vrátíme zpět k bramborám.\n2.Balkánský sýr nastrouháme na hrubší nudličky a přidáme k bramborám. Přisypeme nasekané bylinky a chilli papričku. Vše zasypeme bramborovým škrobem a připravenou strouhankou. Mlýnkem s černým pepřem nad těstem párkrát otočíme. Vše promícháme a vytvoříme kompaktní těsto.\n3.Nesolíme, protože balkánským sýr je velmi slaný. Nepřidáváme ani vajíčko.\n4.Do pánve nalijeme vyšší vrstvu tuku a začneme zahřívat. Všechny připravené suroviny na karbanátky promícháme a navlhčenými dlaněmi tvoříme karbanátky přibližně o průměru 7 – 8 cm. Karbanátky smažíme po obou stranách v rozpáleném oleji do barvy lesního medu.\nUsmažené karbanátky prokládáme papírovými utěrkami, aby se odsál přebytečný tuk. Můžeme podávat s jakýmkoli zeleninovým salátem nebo s tím, co máte rádi",
+    "photoUrl": "https://static.toprecepty.cz/fotky/recepty/0092/karbanatky-z-brambor-a-balkanskeho-syra-178920-1920-1080-nwo.webp",
+    "ingredients": [
+      {
+        "amount": 600,
+        "unit": "gr",
+        "id": "f1c089d2330f3177"
+      },
+      {
+        "amount": 200,
+        "unit": "gr",
+        "id": "1ea764f1fcfc35b7"
+      },
+      {
+        "amount": 3,
+        "unit": "lžíce",
+        "id": "49b4fbfa7a9c088b"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíce",
+        "id": "41f4cf04b86c5c6d"
+      },
+      {
+        "amount": 1,
+        "unit": "kus",
+        "id": "c5e6ef8d403b4263"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "98b125623e3e64dc"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "ee9bc1a2bf3f5ecc"
+      }
+    ],
+    "starred": [],
+    "created": "2023-06-10T09:51:07.028Z",
+    "createdBy": "7657-6217-1",
+    "id": "78aa8936e3c33caa"
+  },
+  {
+    "name": "Krémová polévka z hlívy ústřičné",
+    "description": "ude zcela jistě chutnat jako skvostná součást oběda",
+    "text": "1.Oloupeme brambory, ponecháme je vcelku. Spolu s nakrájenou hlívou zalijeme vodou a vaříme do změknutí brambor (většinou 30 min podle stavu a druhu brambor).\n2.Brambory vyjmeme a nakrájíme na kostičky.\nHlívu rozmixujeme do hladka s bazalkou, dle potřeby zředíme vodou a přivedeme znovu k varu (pokud by byla velmi hustá). Přidáme zpět pokrájené brambory.\n3.Dochutíme ostatním kořením dle zvyku a potřeby.\nServírujeme posypané smaženou cibulkou.",
+    "photoUrl": "https://static.toprecepty.cz/fotky/recepty/0663/kremova-polevka-z-hlivy-ustricne-246429-1920-1080-nwo.webp",
+    "ingredients": [
+      {
+        "amount": 3,
+        "unit": "kus",
+        "id": "f1c089d2330f3177"
+      },
+      {
+        "amount": 1,
+        "unit": "balení",
+        "id": "d9488a906e7917c1"
+      },
+      {
+        "amount": 1,
+        "unit": "lžíce",
+        "id": "11f35a898fe8ca9d"
+      },
+      {
+        "amount": 700,
+        "unit": "ml",
+        "id": "111cf82601aa4b5b"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "77bca5d2bc46eb03"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "98b125623e3e64dc"
+      }
+    ],
+    "starred": [],
+    "created": "2023-06-10T09:54:26.333Z",
+    "createdBy": "7657-6217-1",
+    "id": "19a5edac6bcf0187"
+  },
+  {
+    "name": "Plněná tortilla",
+    "description": "S kuřecím masem a zeleninou ",
+    "text": "1.Kuřecí prsa nakrájíme na nudličky, posypeme grilovacím kořením a orestujeme na trošce oleje.\n2.Mezitím nakrájíme na menší kousky zeleninu a pak smícháme s masem dohromady.\n3.Dresink: můžeme použít tatarskou omáčku, bílý jogurt, chilli koření. Prostě tak, jak kdo má rád.\n4.Tortilly opečeme po obou stranách, jen aby se ohřály.\n5.Naklademe na ně maso, zeleninu a zalijeme dresinkem. Tortilly přehneme a můžeme servírovat.",
+    "photoUrl": "https://static.toprecepty.cz/fotky/recepty/0129/plnena-tortilla-198289-1920-1080-nwo.webp",
+    "ingredients": [
+      {
+        "amount": 2,
+        "unit": "kus",
+        "id": "50bdade19fe789df"
+      },
+      {
+        "amount": 2,
+        "unit": "kus",
+        "id": "13683ed25440bc66"
+      },
+      {
+        "amount": 1,
+        "unit": "kus",
+        "id": "f3519ed4d266a3b4"
+      },
+      {
+        "amount": 1,
+        "unit": "kus",
+        "id": "5851cb8a4214aed2"
+      },
+      {
+        "amount": 1,
+        "unit": "kus",
+        "id": "98b12a023e3e64dc"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "4cc80fe2181787cc"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "0b34742281d9ff9c"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "98b125623e3e64dc"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "eb3f9ffb375638cd"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "08313c3718cbc13b"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "77bca5d2bc46eb03"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "ee9bc1a2bf3f5ecc"
+      }
+    ],
+    "starred": ["7657-6217-1"],
+    "created": "2023-06-10T09:59:29.830Z",
+    "createdBy": "7657-6217-1",
+    "id": "0e90bc278d17b749"
   },
   {
     "name": "Kurkumáček za hubičku",
