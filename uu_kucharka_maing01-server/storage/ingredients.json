@@ -48,18 +48,6 @@
     "id": "7a5692e06ed68024"
   },
   {
-    "name": "domácího kysaného zelí",
-    "created": "2023-06-10T07:39:10.430Z",
-    "createdBy": "256-5098-1",
-    "id": "c1db59b9161bccd7"
-  },
-  {
-    "name": "kurkumy",
-    "created": "2023-06-10T07:39:24.978Z",
-    "createdBy": "256-5098-1",
-    "id": "89ce901cc11f1515"
-  },
-  {
     "name": "polohrubé mouky",
     "created": "2023-06-10T07:39:55.586Z",
     "createdBy": "256-5098-1",
@@ -502,5 +490,11 @@
     "created": "2023-06-10T09:59:18.100Z",
     "createdBy": "7657-6217-1",
     "id": "08313c3718cbc13b"
+  },
+  {
+    "name": "marmeláda",
+    "created": "2023-06-10T08:57:49.348Z",
+    "createdBy": "15-8545-1",
+    "id": "a93a78c76326779b"
   }
 ]

@@ -18,7 +18,7 @@
     ],
     "created": "2023-06-06T18:39:00.321Z",
     "createdBy": "15-8545-1",
-    "starred": [],
+    "starred": ["15-8545-1"],
     "text": "Vezmeme buřty a dáme je na talíř.\nPak nakrájíme cibuli na kolečka a posypeme buřty.\n\nPodáváme ideálně s vychlazeným pivem. "
   },
   {
@@ -45,7 +45,7 @@
     "id": "495a2f53fg8edd18",
     "createdBy": "4-7644-1",
     "created": "2023-06-04T18:39:00.321Z",
-    "starred": [],
+    "starred": ["15-8545-1"],
     "text": "Vezmeme všechny suroviny a dáme je na hromadu.\n\nPak zavoláme Accio lívance! a otevřeným oknem přivoláme čerstvé lívance od sousedky.",
     "ingredients": [
       {
@@ -620,9 +620,9 @@
   },
   {
     "name": "Krémová polévka z hlívy ústřičné",
-    "description": "ude zcela jistě chutnat jako skvostná součást oběda",
+    "description": "bude zcela jistě chutnat jako skvostná součást oběda",
     "text": "1.Oloupeme brambory, ponecháme je vcelku. Spolu s nakrájenou hlívou zalijeme vodou a vaříme do změknutí brambor (většinou 30 min podle stavu a druhu brambor).\n2.Brambory vyjmeme a nakrájíme na kostičky.\nHlívu rozmixujeme do hladka s bazalkou, dle potřeby zředíme vodou a přivedeme znovu k varu (pokud by byla velmi hustá). Přidáme zpět pokrájené brambory.\n3.Dochutíme ostatním kořením dle zvyku a potřeby.\nServírujeme posypané smaženou cibulkou.",
-    "photoUrl": "https://static.toprecepty.cz/fotky/recepty/0663/kremova-polevka-z-hlivy-ustricne-246429-1920-1080-nwo.webp",
+    "photoUrl": "https://images.pexels.com/photos/4103375/pexels-photo-4103375.jpeg?auto=compress&cs=tinysrgb&w=300&dpr=1",
     "ingredients": [
       {
         "amount": 3,
@@ -733,23 +733,6 @@
     "id": "0e90bc278d17b749"
   },
   {
-    "name": "Kurkumáček za hubičku",
-    "description": "Koule z býka, které jsou mimořádně výtečné. Alahomora!",
-    "text": "Promícháme veškeré suroviny, kromě strouhanky.\n\nLžící odebereme řádně promíchanou směs na zhruba 30 gramovou kuličku, kterou vyválíme ve strouhance.\n\nSmažíme v pánvi na rozpáleném oleji dozlatova.",
-    "photoUrl": "https://static.toprecepty.cz/fotky/recepty/0667/kurkumacek-za-hubicku-246883-677-508-nw.webp",
-    "ingredients": [
-      {
-        "amount": 500,
-        "unit": "gr",
-        "id": "7a5692e06ed68024"
-      }
-    ],
-    "starred": [],
-    "created": "2023-06-10T07:38:46.452Z",
-    "createdBy": "256-5098-1",
-    "id": "9b7115d4b1d211b0"
-  },
-  {
     "name": "Vejce zapečená v šunce",
     "description": "Recept pro vysoce kvalifikované šéfkuchaře",
     "text": "Formy na muffiny vymažeme máslem a do každé dáme 2 kolečka šunky, kuličku mozzarelly, vklepneme vejce, osolíme, opepříme a posypeme goudou.\n\nVložíme do vyhřáté trouby na 180 °C a pečeme 10 minut.\n\nZelený chřest oloupeme, odlomíme spodní část a vložíme do vroucí osolené vody.",
@@ -795,5 +778,27 @@
     "created": "2023-06-10T07:59:23.407Z",
     "createdBy": "256-5098-1",
     "id": "1d6e942a00601cf7"
+  },
+  {
+    "name": "Velmi delikátní buřty s marmeládou",
+    "description": "Toto je velmi dlouhý popis receptu. Určitě víc než dvě řádky. Prostě fakt moc.",
+    "text": "Vezmeme buřty a marmeládu.\n\nNamažeme si buřtík a užíváme si výživný cringe pocit, který prostupuje celou naši bytost.",
+    "photoUrl": "",
+    "ingredients": [
+      {
+        "amount": 3,
+        "unit": "šňůra",
+        "id": "a7b12a023e3e64dc"
+      },
+      {
+        "amount": 0,
+        "unit": "",
+        "id": "a93a78c76326779b"
+      }
+    ],
+    "starred": ["15-8545-1"],
+    "created": "2023-06-10T08:57:57.352Z",
+    "createdBy": "11-8757-1",
+    "id": "fae5b01bc63ff235"
   }
 ]

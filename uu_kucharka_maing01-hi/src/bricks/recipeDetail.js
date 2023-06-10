@@ -83,11 +83,7 @@ class RecipeDetail extends Component {
         <Modal.Header closeButton>
           <Modal.Title>{item.name}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          {item.description}
-          <br />
-          {item.longDesc}
-        </Modal.Body>
+        <Modal.Body>{item.description}</Modal.Body>
         <hr />
         <Modal.Body className={"pre"}>{item.text}</Modal.Body>
         <hr />

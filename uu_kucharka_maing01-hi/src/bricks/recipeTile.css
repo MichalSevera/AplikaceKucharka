@@ -1,0 +1,23 @@
+.nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.force-wrap {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 48px;
+
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.top-image {
+  background-size: cover;
+  padding-top: 150px;
+  border-top-left-radius: var(--bs-card-border-radius);
+  border-top-right-radius: var(--bs-card-border-radius);
+}
